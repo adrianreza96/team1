@@ -2,6 +2,7 @@ create table [dbo].[roles](
 id int primary key,
 rolename varchar(20) not null unique);
 
+
 insert into roles(id, rolename) values
 (1, 'guest'),
 (2, 'customer'),
@@ -9,6 +10,7 @@ insert into roles(id, rolename) values
 (4, 'admin');
 
 select * from roles;
+
 
 CREATE TABLE [dbo].[users] (
 id int primary key identity (1,1), 
@@ -18,6 +20,7 @@ email varchar(100) unique,
 password varchar(50),
 sec_question1 varchar(50), 
 sec_question2 varchar(50),
+billingaddress varchar(100),
 role int default 1,
 constraint fk_user_role foreign key(role) references roles(id) on delete set default
 );
@@ -50,9 +53,13 @@ constraint fk_menuitem_kitchen foreign key(kitchenid) references kitchens(kitche
 );
 
 
-
-
-
-
-
+create table [dbo].[orders] (
+orderid int primary key identity (1,1),
+menuitemid int not null,
+itemquantity int,
+userid int not null,
+orderdate DateTime,
+deliveryaddress varchar(100),
+constraint fk_order_nenu foreign key(menuitemid) references menuitems(menuitemid) on delete no action,
+constraint fk_order_user foreign key(userid) references users(id) on delete no action
 );

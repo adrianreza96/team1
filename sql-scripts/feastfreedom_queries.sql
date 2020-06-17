@@ -6,7 +6,7 @@ CREATE TABLE Roles(
 CREATE table Users(
 [UserID] [int] PRIMARY KEY identity(1,1),
 [Name] [nvarchar](50) NOT NULL,
-[Email] [nvarchar](50) NOT NULL,
+[Email] [nvarchar](50) NOT NULL Unique,
 [Password] [varchar](24) NOT NULL,
 [Address] [nvarchar](max) NOT NULL,
 [SecurityQuestionOne] [nvarchar](50),
@@ -41,6 +41,7 @@ UserID int foreign key references Users(UserID),
 MenuID int foreign key references Menu(MenuID),
 Quantity int NOT NULL,
 TotalPrice int NOT NULL,
+IsOrdered bit NOT NULL,
 OrderDate DateTime NOT NULL,
 ShippingAddress nvarchar(max) NOT NULL,
 );

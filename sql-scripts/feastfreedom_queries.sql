@@ -9,6 +9,8 @@ CREATE table Users(
 [Email] [nvarchar](50) NOT NULL,
 [Password] [varchar](24) NOT NULL,
 [Address] [nvarchar](max) NOT NULL,
+[SecurityQuestionOne] [nvarchar](50),
+[SecurityQuestionTwo] [nvarchar](50),
 [RoleID] [int] foreign key references Roles(RoleID) NOT NULL default 4,
 );
 

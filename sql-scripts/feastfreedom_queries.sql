@@ -31,6 +31,7 @@ ItemName nvarchar(50) NOT NULL,
 VeganFriendly varchar(20) NOT NULL,
 MenuType nvarchar(50) NOT NULL,
 Ingredients nvarchar(max) NOT NULL,
+Image image,
 Price money NOT NULL,
 );
 

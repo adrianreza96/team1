@@ -1,14 +1,14 @@
 USE [evaluation]
 GO
 
-/****** Object:  Table [dbo].[orders_table]    Script Date: 6/17/2020 10:59:33 AM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 6/17/2020 10:59:33 AM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[orders_table](
+CREATE TABLE [dbo].[Orders](
 	[OrderID] [int] IDENTITY(1,1) NOT NULL,
 	[UserID] [int] NULL,
 	[MenuID] [int] NULL,
@@ -23,11 +23,11 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[orders_table]  WITH CHECK ADD FOREIGN KEY([MenuID])
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD FOREIGN KEY([MenuID])
 REFERENCES [dbo].[Menu] ([MenuID])
 GO
 
-ALTER TABLE [dbo].[orders_table]  WITH CHECK ADD FOREIGN KEY([UserID])
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD FOREIGN KEY([UserID])
 REFERENCES [dbo].[Users] ([UserID])
 GO
 

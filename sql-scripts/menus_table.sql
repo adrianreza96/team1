@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[Menu](
 	[VeganFriendly] [bit] NOT NULL,
 	[Price] [money] NOT NULL,
 	[KitchenID] [int] NOT NULL,
-	[MenuType] nvarchar(20) NOT NULL,
+	[MenuType] nvarchar(50) NOT NULL,
 	[Ingredients] nvarchar(max) NOT NULL,
  CONSTRAINT [PK_Menu] PRIMARY KEY CLUSTERED 
 (

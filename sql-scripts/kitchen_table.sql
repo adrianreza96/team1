@@ -1,7 +1,7 @@
 USE [evaluation]
 GO
 
-/****** Object:  Table [dbo].[Kitchens]    Script Date: 6/17/2020 10:55:26 AM ******/
+/****** Object:  Table [dbo].[Kitchens]    Script Date: 6/17/2020 10:55:26 AM  hello******/
 SET ANSI_NULLS ON
 GO
 

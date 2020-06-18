@@ -1,4 +1,4 @@
-﻿@model FeastFreedom.Models.Kitchen
+﻿@model FeastFreedom.Models.Order
 
 @{
     ViewBag.Title = "Delete";
@@ -8,47 +8,47 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Kitchen</h4>
+    <h4>Order</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.KitchenName)
+            @Html.DisplayNameFor(model => model.Quantity)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.KitchenName)
+            @Html.DisplayFor(model => model.Quantity)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.WorkingDays)
+            @Html.DisplayNameFor(model => model.IsPaid)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.WorkingDays)
+            @Html.DisplayFor(model => model.IsPaid)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
+            @Html.DisplayNameFor(model => model.OrderDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StartTime)
+            @Html.DisplayFor(model => model.OrderDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CloseTime)
+            @Html.DisplayNameFor(model => model.ShippingAddress)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CloseTime)
+            @Html.DisplayFor(model => model.ShippingAddress)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Image)
+            @Html.DisplayNameFor(model => model.Menu.ItemName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            @Html.DisplayFor(model => model.Menu.ItemName)
         </dd>
 
         <dt>

@@ -10,112 +10,116 @@ using FeastFreedom.Models;
 
 namespace FeastFreedom.Controllers
 {
-    public class KitchensController : Controller
+    public class OrdersController : Controller
     {
         private feastfreedomEntities db = new feastfreedomEntities();
 
-        // GET: Kitchens
+        // GET: Orders
         public ActionResult Index()
         {
-            var kitchens = db.Kitchens.Include(k => k.User);
-            return View(kitchens.ToList());
+            var orders = db.Orders.Include(o => o.Menu).Include(o => o.User);
+            return View(orders.ToList());
         }
 
-        // GET: Kitchens/Details/5
+        // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kitchen kitchen = db.Kitchens.Find(id);
-            if (kitchen == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return HttpNotFound();
             }
-            return View(kitchen);
+            return View(order);
         }
 
-        // GET: Kitchens/Create
+        // GET: Orders/Create
         public ActionResult Create()
         {
+            ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName");
             ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName");
             return View();
         }
 
-        // POST: Kitchens/Create
+        // POST: Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KitchenId,KitchenName,UserId,WorkingDays,StartTime,CloseTime,Image")] Kitchen kitchen)
+        public ActionResult Create([Bind(Include = "OrderId,UserId,MenuId,Quantity,IsPaid,OrderDate,ShippingAddress")] Order order)
         {
             if (ModelState.IsValid)
             {
-                db.Kitchens.Add(kitchen);
+                db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
-            return View(kitchen);
+            ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName", order.MenuId);
+            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", order.UserId);
+            return View(order);
         }
 
-        // GET: Kitchens/Edit/5
+        // GET: Orders/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kitchen kitchen = db.Kitchens.Find(id);
-            if (kitchen == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
-            return View(kitchen);
+            ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName", order.MenuId);
+            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", order.UserId);
+            return View(order);
         }
 
-        // POST: Kitchens/Edit/5
+        // POST: Orders/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KitchenId,KitchenName,UserId,WorkingDays,StartTime,CloseTime,Image")] Kitchen kitchen)
+        public ActionResult Edit([Bind(Include = "OrderId,UserId,MenuId,Quantity,IsPaid,OrderDate,ShippingAddress")] Order order)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(kitchen).State = EntityState.Modified;
+                db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
-            return View(kitchen);
+            ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName", order.MenuId);
+            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", order.UserId);
+            return View(order);
         }
 
-        // GET: Kitchens/Delete/5
+        // GET: Orders/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kitchen kitchen = db.Kitchens.Find(id);
-            if (kitchen == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return HttpNotFound();
             }
-            return View(kitchen);
+            return View(order);
         }
 
-        // POST: Kitchens/Delete/5
+        // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Kitchen kitchen = db.Kitchens.Find(id);
-            db.Kitchens.Remove(kitchen);
+            Order order = db.Orders.Find(id);
+            db.Orders.Remove(order);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

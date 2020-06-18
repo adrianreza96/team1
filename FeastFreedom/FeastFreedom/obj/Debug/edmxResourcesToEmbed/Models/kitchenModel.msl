@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="feastfreedomModelStoreContainer" CdmEntityContainer="feastfreedomEntities">
+    <EntitySetMapping Name="Kitchens">
+      <EntityTypeMapping TypeName="feastfreedomModel.Kitchen">
+        <MappingFragment StoreEntitySet="Kitchens">
+          <ScalarProperty Name="KitchenId" ColumnName="KitchenId" />
+          <ScalarProperty Name="KitchenName" ColumnName="KitchenName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="WorkingDays" ColumnName="WorkingDays" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

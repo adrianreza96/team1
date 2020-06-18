@@ -172,6 +172,7 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>allModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserDBHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

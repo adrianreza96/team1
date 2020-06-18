@@ -137,26 +137,40 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KitchensController.cs" />
+    <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\allModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>allModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\allModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>allModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\allModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>allModels.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Kitchen.cs">
-      <DependentUpon>kitchenModel.tt</DependentUpon>
+      <DependentUpon>allModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\kitchenModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>kitchenModel.Context.tt</DependentUpon>
+    <Compile Include="Models\Menu.cs">
+      <DependentUpon>allModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\kitchenModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>kitchenModel.tt</DependentUpon>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>allModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\kitchenModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>kitchenModel.edmx</DependentUpon>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>allModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>allModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -170,24 +184,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\kitchenModel.Context.tt">
+    <Content Include="Models\allModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>kitchenModel.edmx</DependentUpon>
-      <LastGenOutput>kitchenModel.Context.cs</LastGenOutput>
+      <DependentUpon>allModels.edmx</DependentUpon>
+      <LastGenOutput>allModels.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\kitchenModel.tt">
+    <Content Include="Models\allModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>kitchenModel.edmx</DependentUpon>
-      <LastGenOutput>kitchenModel.cs</LastGenOutput>
+      <DependentUpon>allModels.edmx</DependentUpon>
+      <LastGenOutput>allModels.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\kitchenModel.edmx">
+    <EntityDeploy Include="Models\allModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>kitchenModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>allModels.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\kitchenModel.edmx.diagram">
-      <DependentUpon>kitchenModel.edmx</DependentUpon>
+    <Content Include="Models\allModels.edmx.diagram">
+      <DependentUpon>allModels.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -219,6 +233,16 @@
     <Content Include="Views\Kitchens\Details.cshtml" />
     <Content Include="Views\Kitchens\Edit.cshtml" />
     <Content Include="Views\Kitchens\Index.cshtml" />
+    <Content Include="Views\Menus\Create.cshtml" />
+    <Content Include="Views\Menus\Delete.cshtml" />
+    <Content Include="Views\Menus\Details.cshtml" />
+    <Content Include="Views\Menus\Edit.cshtml" />
+    <Content Include="Views\Menus\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

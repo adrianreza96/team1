@@ -17,7 +17,8 @@ namespace FeastFreedom.Controllers
         // GET: Kitchens
         public ActionResult Index()
         {
-            return View(db.Kitchens.ToList());
+            var kitchens = db.Kitchens.Include(k => k.User);
+            return View(kitchens.ToList());
         }
 
         // GET: Kitchens/Details/5
@@ -38,6 +39,7 @@ namespace FeastFreedom.Controllers
         // GET: Kitchens/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName");
             return View();
         }
 
@@ -55,6 +57,7 @@ namespace FeastFreedom.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
             return View(kitchen);
         }
 
@@ -70,6 +73,7 @@ namespace FeastFreedom.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
             return View(kitchen);
         }
 
@@ -86,6 +90,7 @@ namespace FeastFreedom.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
             return View(kitchen);
         }
 

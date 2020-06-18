@@ -1,0 +1,66 @@
+﻿@model FeastFreedom.Models.Kitchen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kitchen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KitchenName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KitchenName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkingDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkingDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CloseTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CloseTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KitchenId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

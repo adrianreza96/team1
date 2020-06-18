@@ -16,6 +16,9 @@
         <AssociationConnector Association="feastfreedomModel.fk_order_menu" ManuallyRouted="false" />
         <AssociationConnector Association="feastfreedomModel.fk_order_user" ManuallyRouted="false" />
         <AssociationConnector Association="feastfreedomModel.fk_user_role" ManuallyRouted="false" />
+        <AssociationConnector Association="feastfreedomModel.FK__Kitchens__UserID__2A4B4B5E" />
+        <AssociationConnector Association="feastfreedomModel.FK__Orders__UserID__300424B4" />
+        <AssociationConnector Association="feastfreedomModel.FK__Users__RoleID__267ABA7A" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

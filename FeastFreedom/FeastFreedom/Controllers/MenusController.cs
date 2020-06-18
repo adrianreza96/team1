@@ -10,112 +10,116 @@ using FeastFreedom.Models;
 
 namespace FeastFreedom.Controllers
 {
-    public class KitchensController : Controller
+    public class MenusController : Controller
     {
         private feastfreedomEntities db = new feastfreedomEntities();
 
-        // GET: Kitchens
+        // GET: Menus
         public ActionResult Index()
         {
-            var kitchens = db.Kitchens.Include(k => k.User);
-            return View(kitchens.ToList());
+            var menus = db.Menus.Include(m => m.Kitchen).Include(m => m.Kitchen1);
+            return View(menus.ToList());
         }
 
-        // GET: Kitchens/Details/5
+        // GET: Menus/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kitchen kitchen = db.Kitchens.Find(id);
-            if (kitchen == null)
+            Menu menu = db.Menus.Find(id);
+            if (menu == null)
             {
                 return HttpNotFound();
             }
-            return View(kitchen);
+            return View(menu);
         }
 
-        // GET: Kitchens/Create
+        // GET: Menus/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName");
+            ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName");
+            ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName");
             return View();
         }
 
-        // POST: Kitchens/Create
+        // POST: Menus/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KitchenId,KitchenName,UserId,WorkingDays,StartTime,CloseTime,Image")] Kitchen kitchen)
+        public ActionResult Create([Bind(Include = "MenuId,KitchenId,ItemName,VeganFriendly,MenuType,Ingredients,Image,Price")] Menu menu)
         {
             if (ModelState.IsValid)
             {
-                db.Kitchens.Add(kitchen);
+                db.Menus.Add(menu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
-            return View(kitchen);
+            ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName", menu.KitchenId);
+            ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName", menu.KitchenId);
+            return View(menu);
         }
 
-        // GET: Kitchens/Edit/5
+        // GET: Menus/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kitchen kitchen = db.Kitchens.Find(id);
-            if (kitchen == null)
+            Menu menu = db.Menus.Find(id);
+            if (menu == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
-            return View(kitchen);
+            ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName", menu.KitchenId);
+            ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName", menu.KitchenId);
+            return View(menu);
         }
 
-        // POST: Kitchens/Edit/5
+        // POST: Menus/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KitchenId,KitchenName,UserId,WorkingDays,StartTime,CloseTime,Image")] Kitchen kitchen)
+        public ActionResult Edit([Bind(Include = "MenuId,KitchenId,ItemName,VeganFriendly,MenuType,Ingredients,Image,Price")] Menu menu)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(kitchen).State = EntityState.Modified;
+                db.Entry(menu).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
-            return View(kitchen);
+            ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName", menu.KitchenId);
+            ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName", menu.KitchenId);
+            return View(menu);
         }
 
-        // GET: Kitchens/Delete/5
+        // GET: Menus/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kitchen kitchen = db.Kitchens.Find(id);
-            if (kitchen == null)
+            Menu menu = db.Menus.Find(id);
+            if (menu == null)
             {
                 return HttpNotFound();
             }
-            return View(kitchen);
+            return View(menu);
         }
 
-        // POST: Kitchens/Delete/5
+        // POST: Menus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Kitchen kitchen = db.Kitchens.Find(id);
-            db.Kitchens.Remove(kitchen);
+            Menu menu = db.Menus.Find(id);
+            db.Menus.Remove(menu);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

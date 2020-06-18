@@ -12,27 +12,18 @@ namespace FeastFreedom.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Kitchen
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Kitchen()
+        public Role()
         {
-            this.Menus = new HashSet<Menu>();
-            this.Menus1 = new HashSet<Menu>();
+            this.Users = new HashSet<User>();
         }
     
-        public int KitchenId { get; set; }
-        public string KitchenName { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public string WorkingDays { get; set; }
-        public Nullable<System.DateTime> StartTime { get; set; }
-        public Nullable<System.DateTime> CloseTime { get; set; }
-        public byte[] Image { get; set; }
+        public int RoleId { get; set; }
+        public string Role1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Menu> Menus { get; set; }
-        public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Menu> Menus1 { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -1,12 +1,10 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
+﻿/* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-top: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +19,39 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.carousel_caption {
+    position: absolute;
+    right: 65%;
+    top: 90px;
+    left: 20%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.carousel-cap {
+    position: absolute;
+    right: 20%;
+    top: 180px;
+    left: 34%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.carousel-bottom {
+    font-size: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 3%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
 }

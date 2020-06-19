@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="feastfreedomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="feastfreedomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Kitchens">
           <Key>
             <PropertyRef Name="KitchenId" />
@@ -17,7 +17,7 @@
           <Property Name="CloseTime" Type="smalldatetime" />
           <Property Name="Image" Type="image" />
         </EntityType>
-        <EntityType Name="Menus">
+        <EntityType Name="Menu">
           <Key>
             <PropertyRef Name="MenuId" />
           </Key>
@@ -63,14 +63,14 @@
           <Property Name="SecurityQuestionTwo" Type="nvarchar" MaxLength="50" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
-        <Association Name="FK__Menu__KitchenId__412EB0B6">
+        <Association Name="FK__Menu__KitchenId__3E52440B">
           <End Role="Kitchens" Type="Self.Kitchens" Multiplicity="0..1" />
-          <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kitchens">
               <PropertyRef Name="KitchenId" />
             </Principal>
-            <Dependent Role="Menus">
+            <Dependent Role="Menu">
               <PropertyRef Name="KitchenId" />
             </Dependent>
           </ReferentialConstraint>
@@ -89,21 +89,21 @@
         </Association>
         <Association Name="fk_menu_kitchen">
           <End Role="Kitchens" Type="Self.Kitchens" Multiplicity="0..1" />
-          <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kitchens">
               <PropertyRef Name="KitchenId" />
             </Principal>
-            <Dependent Role="Menus">
+            <Dependent Role="Menu">
               <PropertyRef Name="KitchenId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_order_menu">
-          <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Menus">
+            <Principal Role="Menu">
               <PropertyRef Name="MenuId" />
             </Principal>
             <Dependent Role="Orders">
@@ -137,13 +137,13 @@
         </Association>
         <EntityContainer Name="feastfreedomModelStoreContainer">
           <EntitySet Name="Kitchens" EntityType="Self.Kitchens" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Menu__KitchenId__412EB0B6" Association="Self.FK__Menu__KitchenId__412EB0B6">
+          <AssociationSet Name="FK__Menu__KitchenId__3E52440B" Association="Self.FK__Menu__KitchenId__3E52440B">
             <End Role="Kitchens" EntitySet="Kitchens" />
-            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
           <AssociationSet Name="fk_kitchen_user" Association="Self.fk_kitchen_user">
             <End Role="Users" EntitySet="Users" />
@@ -151,10 +151,10 @@
           </AssociationSet>
           <AssociationSet Name="fk_menu_kitchen" Association="Self.fk_menu_kitchen">
             <End Role="Kitchens" EntitySet="Kitchens" />
-            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
           <AssociationSet Name="fk_order_menu" Association="Self.fk_order_menu">
-            <End Role="Menus" EntitySet="Menus" />
+            <End Role="Menu" EntitySet="Menu" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="fk_order_user" Association="Self.fk_order_user">
@@ -166,8 +166,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="feastfreedomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -182,25 +181,9 @@
           <Property Name="StartTime" Type="DateTime" Precision="0" />
           <Property Name="CloseTime" Type="DateTime" Precision="0" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Menus" Relationship="Self.FK__Menu__KitchenId__412EB0B6" FromRole="Kitchens" ToRole="Menus" />
           <NavigationProperty Name="User" Relationship="Self.fk_kitchen_user" FromRole="Kitchens" ToRole="Users" />
-          <NavigationProperty Name="Menus1" Relationship="Self.fk_menu_kitchen" FromRole="Kitchens" ToRole="Menus" />
-        </EntityType>
-        <EntityType Name="Menu">
-          <Key>
-            <PropertyRef Name="MenuId" />
-          </Key>
-          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KitchenId" Type="Int32" />
-          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="VeganFriendly" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="MenuType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Ingredients" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Kitchen" Relationship="Self.FK__Menu__KitchenId__412EB0B6" FromRole="Menus" ToRole="Kitchens" />
-          <NavigationProperty Name="Kitchen1" Relationship="Self.fk_menu_kitchen" FromRole="Menus" ToRole="Kitchens" />
-          <NavigationProperty Name="Orders" Relationship="Self.fk_order_menu" FromRole="Menus" ToRole="Orders" />
+          <NavigationProperty Name="Menus2" Relationship="feastfreedomModel.FK__Menu__KitchenId__3E52440B" FromRole="Kitchen" ToRole="Menu1" />
+          <NavigationProperty Name="Menus11" Relationship="feastfreedomModel.fk_menu_kitchen1" FromRole="Kitchen" ToRole="Menu1" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -213,8 +196,8 @@
           <Property Name="IsPaid" Type="Boolean" />
           <Property Name="OrderDate" Type="DateTime" Precision="3" />
           <Property Name="ShippingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Menu" Relationship="Self.fk_order_menu" FromRole="Orders" ToRole="Menus" />
           <NavigationProperty Name="User" Relationship="Self.fk_order_user" FromRole="Orders" ToRole="Users" />
+          <NavigationProperty Name="Menu" Relationship="feastfreedomModel.fk_order_menu1" FromRole="Order" ToRole="Menu1" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -241,18 +224,6 @@
           <NavigationProperty Name="Orders" Relationship="Self.fk_order_user" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="Role" Relationship="Self.fk_user_role" FromRole="Users" ToRole="Roles" />
         </EntityType>
-        <Association Name="FK__Menu__KitchenId__412EB0B6">
-          <End Role="Kitchens" Type="Self.Kitchen" Multiplicity="0..1" />
-          <End Role="Menus" Type="Self.Menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kitchens">
-              <PropertyRef Name="KitchenId" />
-            </Principal>
-            <Dependent Role="Menus">
-              <PropertyRef Name="KitchenId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_kitchen_user">
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
           <End Role="Kitchens" Type="Self.Kitchen" Multiplicity="*" />
@@ -262,30 +233,6 @@
             </Principal>
             <Dependent Role="Kitchens">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_menu_kitchen">
-          <End Role="Kitchens" Type="Self.Kitchen" Multiplicity="0..1" />
-          <End Role="Menus" Type="Self.Menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kitchens">
-              <PropertyRef Name="KitchenId" />
-            </Principal>
-            <Dependent Role="Menus">
-              <PropertyRef Name="KitchenId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_order_menu">
-          <End Role="Menus" Type="Self.Menu" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Menus">
-              <PropertyRef Name="MenuId" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="MenuId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -315,25 +262,12 @@
         </Association>
         <EntityContainer Name="feastfreedomEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Kitchens" EntityType="Self.Kitchen" />
-          <EntitySet Name="Menus" EntityType="Self.Menu" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__Menu__KitchenId__412EB0B6" Association="Self.FK__Menu__KitchenId__412EB0B6">
-            <End Role="Kitchens" EntitySet="Kitchens" />
-            <End Role="Menus" EntitySet="Menus" />
-          </AssociationSet>
           <AssociationSet Name="fk_kitchen_user" Association="Self.fk_kitchen_user">
             <End Role="Users" EntitySet="Users" />
             <End Role="Kitchens" EntitySet="Kitchens" />
-          </AssociationSet>
-          <AssociationSet Name="fk_menu_kitchen" Association="Self.fk_menu_kitchen">
-            <End Role="Kitchens" EntitySet="Kitchens" />
-            <End Role="Menus" EntitySet="Menus" />
-          </AssociationSet>
-          <AssociationSet Name="fk_order_menu" Association="Self.fk_order_menu">
-            <End Role="Menus" EntitySet="Menus" />
-            <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="fk_order_user" Association="Self.fk_order_user">
             <End Role="Users" EntitySet="Users" />
@@ -343,7 +277,72 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Menus" EntityType="feastfreedomModel.Menu" />
+          <AssociationSet Name="FK__Menu__KitchenId__3E52440B" Association="feastfreedomModel.FK__Menu__KitchenId__3E52440B">
+            <End Role="Kitchen" EntitySet="Kitchens" />
+            <End Role="Menu1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="fk_menu_kitchen1" Association="feastfreedomModel.fk_menu_kitchen1">
+            <End Role="Kitchen" EntitySet="Kitchens" />
+            <End Role="Menu1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_menu1" Association="feastfreedomModel.fk_order_menu1">
+            <End Role="Menu1" EntitySet="Menus" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KitchenId" Type="Int32" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VeganFriendly" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MenuType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ingredients" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Kitchen" Relationship="feastfreedomModel.FK__Menu__KitchenId__3E52440B" FromRole="Menu1" ToRole="Kitchen" />
+          <NavigationProperty Name="Kitchen1" Relationship="feastfreedomModel.fk_menu_kitchen1" FromRole="Menu1" ToRole="Kitchen" />
+          <NavigationProperty Name="Orders" Relationship="feastfreedomModel.fk_order_menu1" FromRole="Menu1" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK__Menu__KitchenId__3E52440B">
+          <End Type="feastfreedomModel.Kitchen" Role="Kitchen" Multiplicity="0..1" />
+          <End Type="feastfreedomModel.Menu" Role="Menu1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitchen">
+              <PropertyRef Name="KitchenId" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="KitchenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_menu_kitchen1">
+          <End Type="feastfreedomModel.Kitchen" Role="Kitchen" Multiplicity="0..1" />
+          <End Type="feastfreedomModel.Menu" Role="Menu1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitchen">
+              <PropertyRef Name="KitchenId" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="KitchenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_menu1">
+          <End Type="feastfreedomModel.Menu" Role="Menu1" Multiplicity="0..1" />
+          <End Type="feastfreedomModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu1">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -360,20 +359,6 @@
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Menus">
-            <EntityTypeMapping TypeName="feastfreedomModel.Menu">
-              <MappingFragment StoreEntitySet="Menus">
-                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
-                <ScalarProperty Name="KitchenId" ColumnName="KitchenId" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="VeganFriendly" ColumnName="VeganFriendly" />
-                <ScalarProperty Name="MenuType" ColumnName="MenuType" />
-                <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -410,6 +395,20 @@
                 <ScalarProperty Name="SecurityQuestionOne" ColumnName="SecurityQuestionOne" />
                 <ScalarProperty Name="SecurityQuestionTwo" ColumnName="SecurityQuestionTwo" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="feastfreedomModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
+                <ScalarProperty Name="MenuType" ColumnName="MenuType" />
+                <ScalarProperty Name="VeganFriendly" ColumnName="VeganFriendly" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="KitchenId" ColumnName="KitchenId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

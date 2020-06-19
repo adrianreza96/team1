@@ -21,6 +21,12 @@ namespace FeastFreedom.Controllers
             return View(kitchens.ToList());
         }
 
+        public ActionResult List()
+        {
+            var kitchens = db.Kitchens.Include(k => k.User);
+            return View(kitchens.ToList());
+        }
+
         // GET: Kitchens/Details/5
         public ActionResult Details(int? id)
         {
@@ -52,6 +58,8 @@ namespace FeastFreedom.Controllers
         {
             if (ModelState.IsValid)
             {
+                kitchen.StartTime = DateTime.Today;
+                kitchen.CloseTime = DateTime.Now;
                 db.Kitchens.Add(kitchen);
                 db.SaveChanges();
                 return RedirectToAction("Index");

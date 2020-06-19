@@ -26,9 +26,9 @@ namespace FeastFreedom.Models
         }
     
         public virtual DbSet<Kitchen> Kitchens { get; set; }
-        public virtual DbSet<Menu> Menus { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Menu> Menus { get; set; }
     }
 }

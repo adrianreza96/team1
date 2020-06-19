@@ -29,10 +29,10 @@ namespace FeastFreedom.Models
         public Nullable<System.DateTime> CloseTime { get; set; }
         public byte[] Image { get; set; }
     
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus11 { get; set; }
-        public virtual User User { get; set; }
     }
 }

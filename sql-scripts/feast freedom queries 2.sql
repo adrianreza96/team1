@@ -30,7 +30,7 @@ UserId int,
 [WorkingDays] [nvarchar](50),
 [StartTime] [smalldatetime],
 [CloseTime] [smalldatetime],
-[Image] [image] NULL,
+[Image] [nvarchar](max) NULL,
 CONSTRAINT fk_kitchen_user foreign key(UserId) references Users(UserId)
 );
 

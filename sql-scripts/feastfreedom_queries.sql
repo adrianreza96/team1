@@ -21,7 +21,7 @@ UserID int foreign key references Users(UserID) NOT NULL,
 [WorkingDays] [nvarchar](50) NOT NULL,
 [StartTime] [smalldatetime] NOT NULL,
 [CloseTime] [smalldatetime] NOT NULL,
-[Image] [image] NULL,
+[Image] [nvarchar](max) NULL,
 );
 
 CREATE table Menu(

@@ -166,9 +166,9 @@ C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\bin\Sy
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\bin\Newtonsoft.Json.xml
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\bin\Antlr3.Runtime.pdb
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csprojAssemblyReference.cache
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csproj.CoreCompileInputs.cache
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csproj.CopyComplete
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.dll
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.pdb
 C:\Users\angel\Documents\2020_Spring\20_Spring_TekBasic_Training\freedom\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csprojAssemblyReference.cache
+C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csprojAssemblyReference.cache

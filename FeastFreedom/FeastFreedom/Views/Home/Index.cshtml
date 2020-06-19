@@ -13,6 +13,12 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <script>
+        document.getElementsByTagName("h3")[0].style = "color: white; font-family: open sans; font-size:400%; position:absolute; top:" + (document.body.clientHeight * 0.25) + "px; left:" + (document.body.clientWidth * 0.19) + "px";
+        document.getElementsByTagName("span")[0].style = "font-weight: 900";
+        document.getElementsByTagName("span")[1].style = "font-weight: 900";
+        document.getElementsByTagName("span")[2].style = "font-weight: 900";
+    </script>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -27,18 +33,11 @@
             </div>
         </div>
     </div>
-    <img src="@Url.Content("~/Images/spoons.jpg")" alt="IMAGES" />
+    <img src="@Url.Content("~/Images/spoons.jpg")" alt="IMAGES"  style="width:auto; height:auto"/>
     <h3>easy <span>Search</span>, then <span>Sit</span> to <span>Dine</span></h3>
 
 
-    <script>
-        document.getElementsByTagName("img")[0].style.width = document.body.clientWidth + "px";
-        document.getElementsByTagName("img")[0].style.height = (document.body.clientHeight + 10) + "px";
-        document.getElementsByTagName("h3")[0].style = "color: white; font-family: open sans; font-size:400%; position:absolute; top:" + (document.body.clientHeight * 0.25) + "px; left:" + (document.body.clientWidth * 0.19) + "px";
-        document.getElementsByTagName("span")[0].style = "font-weight: 900";
-        document.getElementsByTagName("span")[1].style = "font-weight: 900";
-        document.getElementsByTagName("span")[2].style = "font-weight: 900";
-    </script>
+
 
 </body>
 </html>

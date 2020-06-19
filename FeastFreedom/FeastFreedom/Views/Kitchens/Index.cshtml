@@ -13,7 +13,7 @@
     {
         <div class="col-xs-4">
             <a href="@Url.Action("Details", "Kitchens", new { id = item.KitchenId })" class="thumbnail">
-                <img src="https://www.helpguide.org/wp-content/uploads/fast-foods-candy-cookies-pastries-768.jpg" alt="@item.KitchenName" />
+                <img src="@item.Image" alt="@item.KitchenName" />
                 @Html.DisplayFor(modelItem => item.KitchenName)
                 @Html.DisplayFor(modelItem => item.WorkingDays)
                 @{

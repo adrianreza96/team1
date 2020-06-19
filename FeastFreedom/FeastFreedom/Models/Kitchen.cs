@@ -17,8 +17,8 @@ namespace FeastFreedom.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kitchen()
         {
-            this.Menus = new HashSet<Menu>();
-            this.Menus1 = new HashSet<Menu>();
+            this.Menus2 = new HashSet<Menu>();
+            this.Menus11 = new HashSet<Menu>();
         }
     
         public int KitchenId { get; set; }
@@ -30,9 +30,9 @@ namespace FeastFreedom.Models
         public byte[] Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Menu> Menus { get; set; }
-        public virtual User User { get; set; }
+        public virtual ICollection<Menu> Menus2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Menu> Menus1 { get; set; }
+        public virtual ICollection<Menu> Menus11 { get; set; }
+        public virtual User User { get; set; }
     }
 }

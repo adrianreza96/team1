@@ -6,19 +6,16 @@
     <edmx:Diagrams>
       <Diagram DiagramId="42fdf9ac1549404d9614dd81d54e22e7" Name="Diagram1">
         <EntityTypeShape EntityType="feastfreedomModel.Kitchen" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="feastfreedomModel.Menu" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="feastfreedomModel.Order" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="feastfreedomModel.Role" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="feastfreedomModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="feastfreedomModel.FK__Menu__KitchenId__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="feastfreedomModel.fk_kitchen_user" ManuallyRouted="false" />
-        <AssociationConnector Association="feastfreedomModel.fk_menu_kitchen" ManuallyRouted="false" />
-        <AssociationConnector Association="feastfreedomModel.fk_order_menu" ManuallyRouted="false" />
-        <AssociationConnector Association="feastfreedomModel.fk_order_user" ManuallyRouted="false" />
-        <AssociationConnector Association="feastfreedomModel.fk_user_role" ManuallyRouted="false" />
-        <AssociationConnector Association="feastfreedomModel.FK__Kitchens__UserID__2A4B4B5E" />
-        <AssociationConnector Association="feastfreedomModel.FK__Orders__UserID__300424B4" />
-        <AssociationConnector Association="feastfreedomModel.FK__Users__RoleID__267ABA7A" />
+        <EntityTypeShape EntityType="feastfreedomModel.Menu" Width="1.5" PointX="7.375" PointY="1.25" />
+        <AssociationConnector Association="feastfreedomModel.FK__Menu__KitchenId__3E52440B" />
+        <AssociationConnector Association="feastfreedomModel.fk_menu_kitchen1" />
+        <EntityTypeShape EntityType="feastfreedomModel.User" Width="1.5" PointX="3" PointY="1.25" />
+        <AssociationConnector Association="feastfreedomModel.fk_kitchen_user" />
+        <EntityTypeShape EntityType="feastfreedomModel.Order" Width="1.5" PointX="9.625" PointY="1.5" />
+        <AssociationConnector Association="feastfreedomModel.fk_order_menu" />
+        <AssociationConnector Association="feastfreedomModel.fk_order_user" />
+        <EntityTypeShape EntityType="feastfreedomModel.Role" Width="1.5" PointX="0.75" PointY="2.125" />
+        <AssociationConnector Association="feastfreedomModel.fk_user_role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

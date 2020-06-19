@@ -157,6 +157,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>allModels.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Kitchen.cs">
+      <DependentUpon>allModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Menu.cs">
+      <DependentUpon>allModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>allModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>allModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>allModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

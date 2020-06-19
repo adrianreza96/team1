@@ -184,6 +184,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\spoons.jpg" />
+    <Content Include="Images\spoon_cereal.jpg" />
     <Content Include="Models\allModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>allModels.edmx</DependentUpon>
@@ -226,8 +228,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kitchens\Create.cshtml" />
     <Content Include="Views\Kitchens\Delete.cshtml" />

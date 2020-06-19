@@ -22,7 +22,7 @@ namespace FeastFreedom.Models
         public Nullable<System.DateTime> OrderDate { get; set; }
         public string ShippingAddress { get; set; }
     
-        public virtual User User { get; set; }
         public virtual Menu Menu { get; set; }
+        public virtual User User { get; set; }
     }
 }

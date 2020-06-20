@@ -21,6 +21,16 @@ namespace FeastFreedom.Controllers
             return View(menus.ToList());
         }
 
+        public ActionResult MenusItems(int? kitchenId)
+        {
+            var menu = db.Menus.Where(model => model.KitchenId == kitchenId).ToList();
+            if (menu == null)
+            {
+                return HttpNotFound();
+            }
+            return View(menu);
+        }
+
         // GET: Menus/Details/5
         public ActionResult Details(int? id)
         {

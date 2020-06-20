@@ -7,15 +7,15 @@
       <Diagram DiagramId="42fdf9ac1549404d9614dd81d54e22e7" Name="Diagram1">
         <EntityTypeShape EntityType="feastfreedomModel.Kitchen" Width="1.5" PointX="5.25" PointY="1.125" />
         <EntityTypeShape EntityType="feastfreedomModel.Menu" Width="1.5" PointX="7.5" PointY="1.125" />
-        <EntityTypeShape EntityType="feastfreedomModel.Order" Width="1.5" PointX="9.75" PointY="1.25" />
         <EntityTypeShape EntityType="feastfreedomModel.Role" Width="1.5" PointX="0.75" PointY="1.875" />
         <EntityTypeShape EntityType="feastfreedomModel.User" Width="1.5" PointX="3" PointY="1" />
-        <AssociationConnector Association="feastfreedomModel.FK__Menu__KitchenId__412EB0B6" />
+        <AssociationConnector Association="feastfreedomModel.FK__Menu__KitchenId__3E52440B" />
         <AssociationConnector Association="feastfreedomModel.fk_kitchen_user" />
         <AssociationConnector Association="feastfreedomModel.fk_menu_kitchen" />
+        <AssociationConnector Association="feastfreedomModel.fk_user_role" />
+        <EntityTypeShape EntityType="feastfreedomModel.Order" Width="1.5" PointX="9.75" PointY="1.25" />
         <AssociationConnector Association="feastfreedomModel.fk_order_menu" />
         <AssociationConnector Association="feastfreedomModel.fk_order_user" />
-        <AssociationConnector Association="feastfreedomModel.fk_user_role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

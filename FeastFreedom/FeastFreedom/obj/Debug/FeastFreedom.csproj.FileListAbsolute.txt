@@ -84,6 +84,7 @@ C:\Users\angel\Documents\2020_Spring\20_Spring_TekBasic_Training\freedom\FeastFr
 C:\Users\angel\Documents\2020_Spring\20_Spring_TekBasic_Training\freedom\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csproj.CopyComplete
 C:\Users\angel\Documents\2020_Spring\20_Spring_TekBasic_Training\freedom\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.dll
 C:\Users\angel\Documents\2020_Spring\20_Spring_TekBasic_Training\freedom\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.pdb
+C:\Users\angel\Documents\2020_Spring\20_Spring_TekBasic_Training\freedom\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csprojAssemblyReference.cache
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\bin\FeastFreedom.dll.config
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\bin\FeastFreedom.dll
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\bin\FeastFreedom.pdb
@@ -171,4 +172,3 @@ C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\De
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csproj.CopyComplete
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.dll
 C:\Users\Adrian\Source\Repos\adrianreza96\team1\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.pdb
-C:\Users\angel\Documents\2020_Spring\20_Spring_TekBasic_Training\freedom\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csprojAssemblyReference.cache

@@ -11,9 +11,9 @@
     
     @foreach (var item in Model)
     {
-        <div class="col-xs-4">
-            <a href="@Url.Action("Details", "Kitchens", new { id = item.KitchenId })" class="thumbnail">
-                <img src="@item.Image" alt="@item.KitchenName" />
+        <div class="col-xs-4" >
+            <a href="@Url.Action("MenusItems", "Menus", new { kitchenId = item.KitchenId })" class="thumbnail">
+                <img src="@item.Image" alt="@item.KitchenName" style="width:400px ; height:200px" />
                 @Html.DisplayFor(modelItem => item.KitchenName)
                 @Html.DisplayFor(modelItem => item.WorkingDays)
                 @{

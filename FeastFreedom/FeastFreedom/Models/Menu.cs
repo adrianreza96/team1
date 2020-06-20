@@ -26,12 +26,12 @@ namespace FeastFreedom.Models
         public string VeganFriendly { get; set; }
         public string MenuType { get; set; }
         public string Ingredients { get; set; }
-        public byte[] Image { get; set; }
         public Nullable<decimal> Price { get; set; }
+        public string Image { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
         public virtual Kitchen Kitchen { get; set; }
         public virtual Kitchen Kitchen1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

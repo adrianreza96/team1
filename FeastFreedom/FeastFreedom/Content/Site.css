@@ -55,3 +55,7 @@ textarea {
     padding-bottom: 20px;
     color: #fff;
 }
+
+.float_left {
+    float: left;
+}

@@ -192,6 +192,7 @@
     <Content Include="Images\cake.jpg" />
     <Content Include="Images\carrot.jpg" />
     <Content Include="Images\glass.jpg" />
+    <Content Include="Images\pizza.jpg" />
     <Content Include="Models\allModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>allModels.edmx</DependentUpon>

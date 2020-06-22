@@ -12,5 +12,9 @@ namespace FeastFreedom.Controllers
         {
             return View();
         }
+
+        public ActionResult Tester() {
+            return View();
+        }
     }
 }

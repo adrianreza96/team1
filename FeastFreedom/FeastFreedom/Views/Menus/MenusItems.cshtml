@@ -13,7 +13,7 @@
 
     @foreach (var item in Model)
     {
-        <div class="col-xs-4" style="min-width:300px;max-width:300px; min-height:200px; max-height:200px">
+        <div class="col-xs-4" >
             <a href="@Url.Action("Details", "Menus", new { id = item.MenuId })" class="thumbnail">
                 <img src="@item.Image" style="width:400px ; height:200px"/>
                 @Html.DisplayFor(modelItem => item.ItemName)

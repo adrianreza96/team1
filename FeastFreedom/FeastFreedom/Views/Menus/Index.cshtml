@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table" >
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ItemName)
@@ -52,7 +52,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Ingredients)
         </td>
-        <td>
+        <td id="image">
             @Html.DisplayFor(modelItem => item.Image)
         </td>
         <td>
@@ -73,3 +73,9 @@
 }
 
 </table>
+<style>
+    #image{
+        word-break: break-all;
+        white-space: normal;
+    }
+</style>

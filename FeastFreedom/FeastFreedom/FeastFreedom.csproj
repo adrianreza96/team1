@@ -246,6 +246,7 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Kitchens\List.cshtml" />
     <Content Include="Views\Menus\MenusItems.cshtml" />
+    <Content Include="Views\Menus\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

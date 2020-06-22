@@ -46,6 +46,41 @@ namespace FeastFreedom.Controllers
             return View(menu);
         }
 
+        public ActionResult cart()
+        {
+            List<Menu> items = (List<Menu>)Session["cart"];
+            
+            return View(items);
+        }
+        
+        public ActionResult Add(Menu menuItem)
+        {
+            if (Session["cart"] == null)
+            {
+                List<Menu> li = new List<Menu>();
+
+                li.Add(menuItem);
+                Session["cart"] = li;
+                ViewBag.cart = li.Count();
+
+
+                Session["count"] = 1;
+
+            }
+            else
+            {
+                List<Menu> li = (List<Menu>)Session["cart"];
+                li.Add(menuItem);
+                Session["cart"] = li;
+                ViewBag.cart = li.Count();
+                Session["count"] = Convert.ToInt32(Session["count"]) + 1;
+
+            }
+            return RedirectToAction("Index", "Kitchens");
+
+
+        }
+
         // GET: Menus/Create
         public ActionResult Create()
         {

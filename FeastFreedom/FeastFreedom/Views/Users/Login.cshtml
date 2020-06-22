@@ -1,0 +1,40 @@
+﻿@model FeastFreedom.Models.User
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width-device-width" />
+    <title>Login Page</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <p>
+        @ViewBag.error;
+       
+    </p>
+    @using (Html.BeginForm()) {
+        <div>
+            <br />
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Email)</td>
+                    <td>@Html.EditorFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Password)</td>
+                    <td>@Html.EditorFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Login" /></td>
+                </tr>
+            </table>
+        </div>
+    }
+</body>
+</html>
+

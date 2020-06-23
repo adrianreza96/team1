@@ -9,74 +9,102 @@
 <div>
     <h4>Menu</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemName)
-        </dt>
+    @using (Html.BeginForm())
+    {
+        <dl id="details" class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.ItemName)
-        </dd>
+            <div class="row">
+                <div class="column">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ItemName)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.VeganFriendly)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ItemName)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.VeganFriendly)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.VeganFriendly)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MenuType)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.VeganFriendly)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MenuType)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MenuType)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ingredients)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.MenuType)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ingredients)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ingredients)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ingredients)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Kitchen.KitchenName)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Kitchen.KitchenName)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Kitchen.KitchenName)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kitchen.KitchenName)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Kitchen1.KitchenName)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Kitchen1.KitchenName)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Kitchen1.KitchenName)
+                    </dd>
+                </div>
+                <div class="column">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kitchen1.KitchenName)
-        </dd>
+                    <dd>
+                        <img src="@Model.Image" style="width:400px ; height:200px" />
+                    </dd>
 
-    </dl>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Add To Cart" class="btn btn-default" />
+                        </div>
+                    </div>
+                    <a id="btn_add" href="@Url.Action("Add", "Menus",Model)" class="btn btn-info btn-lg" style="margin-left:60px">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
+                    </a>
+                </div>
+            </div>
+        </dl>
+    }
 </div>
+    
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.MenuId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "MenusItems", new { kitchenId = Model.KitchenId })
 </p>
+
+<style>
+    #details {
+        margin: auto;
+        width: 60%;
+        border: 3px solid #73AD21;
+        padding: 10px;
+        text-align: center;
+    }
+</style>

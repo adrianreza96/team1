@@ -4,10 +4,8 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Menu</h4>
+    <h4>@Model.Kitchen.KitchenName @Model.ItemName Details</h4>
     <hr />
     @using (Html.BeginForm())
     {
@@ -63,19 +61,8 @@
                         @Html.DisplayFor(model => model.Kitchen.KitchenName)
                     </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Kitchen1.KitchenName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Kitchen1.KitchenName)
-                    </dd>
                 </div>
                 <div class="column" id="rightColumn">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Image)
-                    </dt>
-
                     <dd>
                         <img src="@Model.Image" class="center" style="width:400px ; height:200px;" />
                     </dd>
@@ -112,5 +99,9 @@
     #rightColumn{
         padding-left:30px;
         float:right;
+    }
+    html, body {
+        margin: 20px;
+        height: 100%;
     }
 </style>

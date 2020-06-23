@@ -74,16 +74,20 @@ namespace FeastFreedom.Controllers
                 return View();
             }
             if (users.Count() == 1) {
+                
                 if (users.First().Password == password) {
                     Session["Id"] = users.First().UserId;
                     Session["Email"] = users.First().Email;
                     Session["Name"] = users.First().FirstName + " " + users.First().LastName;
+                    ViewBag.Users = users.First();
                     return RedirectToAction("Tester", "Home");
                 }
                 else {
                     ViewBag.error = "Invalid user credentials.  Please retry ";
                     return View();
                 }
+
+                
             }
             else {
                 ViewBag.error = "Too many users retrieved";

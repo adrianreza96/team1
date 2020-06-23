@@ -53,6 +53,7 @@ namespace FeastFreedom.Controllers
             return View(items);
         }
         
+        
         public ActionResult Add(Menu menuItem)
         {
             if (Session["cart"] == null)
@@ -65,7 +66,7 @@ namespace FeastFreedom.Controllers
 
 
                 Session["count"] = 1;
-
+                return RedirectToAction("Login", "Users");
             }
             else
             {
@@ -77,8 +78,6 @@ namespace FeastFreedom.Controllers
 
             }
             return RedirectToAction("Index", "Kitchens");
-
-
         }
 
         // GET: Menus/Create

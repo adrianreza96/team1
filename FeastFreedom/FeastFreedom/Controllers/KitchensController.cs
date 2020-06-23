@@ -52,7 +52,6 @@ namespace FeastFreedom.Controllers
         // POST: Kitchens/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles ="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "KitchenId,KitchenName,UserId,WorkingDays,StartTime,CloseTime,Image")] Kitchen kitchen)

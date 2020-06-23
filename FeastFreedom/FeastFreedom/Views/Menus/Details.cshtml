@@ -71,20 +71,15 @@
                         @Html.DisplayFor(model => model.Kitchen1.KitchenName)
                     </dd>
                 </div>
-                <div class="column">
+                <div class="column" id="rightColumn">
                     <dt>
                         @Html.DisplayNameFor(model => model.Image)
                     </dt>
 
                     <dd>
-                        <img src="@Model.Image" style="width:400px ; height:200px" />
+                        <img src="@Model.Image" class="center" style="width:400px ; height:200px;" />
                     </dd>
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Add To Cart" class="btn btn-default" />
-                        </div>
-                    </div>
                     <a id="btn_add" href="@Url.Action("Add", "Menus",Model)" class="btn btn-info btn-lg" style="margin-left:60px">
                         <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
                     </a>
@@ -102,9 +97,20 @@
 <style>
     #details {
         margin: auto;
-        width: 60%;
+        width: 80%;
         border: 3px solid #73AD21;
-        padding: 10px;
+        padding: 50px;
         text-align: center;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    #rightColumn{
+        padding-left:30px;
+        float:right;
     }
 </style>

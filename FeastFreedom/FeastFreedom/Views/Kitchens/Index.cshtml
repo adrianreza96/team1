@@ -7,11 +7,10 @@
 <h2>Kitchens</h2>
 
 
-<table id="Tile" class="table">
-    
+<div class="wrapper">
     @foreach (var item in Model)
     {
-        <div class="col-xs-4" >
+        <div>
             <a href="@Url.Action("MenusItems", "Menus", new { kitchenId = item.KitchenId })" class="thumbnail">
                 <img src="@item.Image" alt="@item.KitchenName" style="width:400px ; height:200px" />
                 @Html.DisplayFor(modelItem => item.KitchenName)
@@ -23,14 +22,16 @@
             </a>
         </div>
     }
+</div>
 
-</table>
+
 <style>
-    #Tile {
-        display: grid;
-        grid-template-columns: 200px 2fr;
-        grid-template-rows: 100px repeat(2, 1fr);
-        grid-gap: 5%;
-        grid-auto-rows: minmax(auto, 300px);
-    }
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    column-gap: 10px;
+        
+}
 </style>

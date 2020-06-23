@@ -102,8 +102,7 @@ namespace FeastFreedom.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName", menu.KitchenId);
+            menu.Kitchen = db.Kitchens.Where(x=>x.KitchenId == menu.KitchenId).First();
             ViewBag.KitchenId = new SelectList(db.Kitchens, "KitchenId", "KitchenName", menu.KitchenId);
             return View(menu);
         }

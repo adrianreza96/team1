@@ -9,27 +9,26 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="Tile" class="table">
+<div class="wrapper">
 
     @foreach (var item in Model)
     {
-        <div class="col-xs-4" >
+        <div class="col-xs-4">
             <a href="@Url.Action("Details", "Menus", new { id = item.MenuId })" class="thumbnail">
-                <img src="@item.Image" style="width:400px ; height:200px"/>
+                <img src="@item.Image" style="width:400px ; height:200px" />
                 @Html.DisplayFor(modelItem => item.ItemName)
                 $@Html.DisplayFor(modelItem => item.Price)
-                
+
             </a>
         </div>
     }
 
-</table>
+</div>
 <style>
-    #Tile {
-        display: grid;
-        grid-template-columns: 200px 2fr;
-        grid-template-rows: 100px repeat(2, 1fr);
-        grid-gap: 5%;
-        grid-auto-rows: minmax(auto, 300px);
-    }
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    column-gap: 10px;
+}
 </style>

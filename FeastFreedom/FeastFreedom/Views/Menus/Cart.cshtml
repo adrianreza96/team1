@@ -6,71 +6,76 @@
 
 <h2>Cart</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VeganFriendly)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MenuType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ingredients)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kitchen.KitchenName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Kitchen1.KitchenName)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+@if (Model == null)
+{
+    <h3>Empty Cart</h3>
+}
+else
+{
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VeganFriendly)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MenuType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ingredients)
-            </td>
-            <td id="image">
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kitchen.KitchenName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kitchen1.KitchenName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MenuId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MenuId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MenuId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VeganFriendly)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MenuType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kitchen.KitchenName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kitchen1.KitchenName)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VeganFriendly)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MenuType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredients)
+                </td>
+                <td id="image">
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kitchen.KitchenName)
+                </td>
+                
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MenuId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MenuId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MenuId })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
 <style>
     #image {
         word-break: break-all;

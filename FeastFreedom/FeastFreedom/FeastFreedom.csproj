@@ -208,6 +208,7 @@
     <Content Include="Models\allModels.edmx.diagram">
       <DependentUpon>allModels.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\Feastfreedom.bak" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

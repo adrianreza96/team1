@@ -145,7 +145,7 @@ namespace FeastFreedom.Controllers
             //smtp.Port = 587;
             smtp.UseDefaultCredentials = true;
             smtp.EnableSsl = true;
-            smtp.Credentials = new System.Net.NetworkCredential("nguluangel@gmail.com", "97namangels19");
+            smtp.Credentials = new System.Net.NetworkCredential("nguluangel@gmail.com", "password");
 
             try
             {

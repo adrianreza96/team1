@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using FeastFreedom.Models;
@@ -28,7 +29,7 @@ namespace FeastFreedom.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = db.Orders.Find(id);  //userid and isPaid
             if (order == null)
             {
                 return HttpNotFound();
@@ -40,7 +41,7 @@ namespace FeastFreedom.Controllers
         public ActionResult Create()
         {
             ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName");
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName");
+            ViewBag.UserId = new SelectList(db.Users, Convert.ToInt32(Session["Id"]), (string)Session["Name"]);
             return View();
         }
 
@@ -59,7 +60,7 @@ namespace FeastFreedom.Controllers
             }
 
             ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName", order.MenuId);
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", order.UserId);
+            ViewBag.UserId = new SelectList(db.Users, (string)Session["Id"], (string)Session["Name"], order.UserId);
             return View(order);
         }
 
@@ -131,6 +132,32 @@ namespace FeastFreedom.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public ActionResult SendEmail()
+        {
+            MailMessage mailtext = new MailMessage("nguluangel@gmail.com", (string)Session["Email"]);
+            mailtext.Subject = "FeastFreedom Order Confirmation";
+            mailtext.Body = "message to be sent";
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            //smtp.Port = 587;
+            smtp.UseDefaultCredentials = true;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new System.Net.NetworkCredential("nguluangel@gmail.com", "97namangels19");
+
+            try
+            {
+                smtp.Send(mailtext);
+                ViewData["Error"] = "Confirmation sent to year email";
+                RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewData["Error"] = "Some Error";
+            }
+            RedirectToAction("Index");
         }
     }
 }

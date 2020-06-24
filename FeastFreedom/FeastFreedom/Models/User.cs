@@ -13,6 +13,7 @@ namespace FeastFreedom.Models
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class User
     {
@@ -44,6 +45,7 @@ namespace FeastFreedom.Models
         public string Password { get; set; }
 
         [Required]
+        [NotMapped]
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]

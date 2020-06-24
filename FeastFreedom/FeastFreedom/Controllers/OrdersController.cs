@@ -151,13 +151,13 @@ namespace FeastFreedom.Controllers
             {
                 smtp.Send(mailtext);
                 ViewData["Error"] = "Confirmation sent to year email";
-                RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             catch (Exception)
             {
                 ViewData["Error"] = "Some Error";
             }
-            RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
     }
 }

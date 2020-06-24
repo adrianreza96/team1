@@ -13,20 +13,22 @@ namespace FeastFreedom.Models
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class User {
+    public partial class User
+    {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User() {
+        public User()
+        {
             this.Kitchens = new HashSet<Kitchen>();
             this.Orders = new HashSet<Order>();
         }
 
         public int UserId { get; set; }
-        
+
         [Required]
-        [Display(Name="First Name")]
-        [StringLength(50, ErrorMessage ="Must be at least 2 characters", MinimumLength =2)]
+        [Display(Name = "First Name")]
+        [StringLength(50, ErrorMessage = "Must be at least 2 characters", MinimumLength = 2)]
         public string FirstName { get; set; }
 
         [Required]
@@ -43,28 +45,28 @@ namespace FeastFreedom.Models
         public string Password { get; set; }
 
         [Required]
+        [NotMapped]
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
-        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage ="The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Billing Address")]
         public string BillingAddress { get; set; }
 
-        [Display(Name = "Security Question One")]
+        [Display(Name = "What is your birth date?")]
         public string SecurityQuestionOne { get; set; }
 
-        [Display(Name = "Security Question Two")]
+        [Display(Name = "What is your birth town?")]
         public string SecurityQuestionTwo { get; set; }
 
         [DefaultValue(1)]
         public Nullable<int> RoleId { get; set; }
 
-    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kitchen> Kitchens { get; set; }
-        public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

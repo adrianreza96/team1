@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - FeastFreedom</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
     <link href="https://fonts.googleapis.com/css2?family=Ruthie&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -31,26 +33,59 @@
                         @Html.ActionLink("Kitchens", "Index", "Kitchens", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Menus", "Index", "Menus", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Menus", "MenusItems", "Menus", new { area = "" }, new { @class = "nav-link" })
                     </li>
-                   
-                    <li class="nav-item">
-                        @Html.ActionLink("LogIn", "Login", "Users", new { area = "" }, new { @class = "nav-link" })
-                    </li>
-                    <li class="active">
-                        <a href="@Url.Action("cart", "Menus")" class="btn btn-info btn-lg">
-                            <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span>Cart 
-                            <span class="badge">@Session["count"]</span>
-                            </a>
-                    </li>
-</div>
+
+
+                    @{
+                        if (Session["Name"] == null)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("LogIn", "Login", "Users", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        }
+
+                        if (Convert.ToInt32(Session["Role"]) == 3)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Register Kitchen", "Create", "Kitchens", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        }
+
+                        if (Session["Name"] != null)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink((string)@Session["Name"], "Login", "Users", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+
+                        }
+
+                        if (Convert.ToInt32(Session["Role"]) == 2)
+                        {
+                            <li class="nav-item">
+                                <a href="@Url.Action("cart", "Menus")" class="nav-link">
+                                    <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span>Cart
+                                    <span class="badge">@Session["count"]</span>
+                                </a>
+                            </li>
+                        }
+
+                        if (Session["Name"] != null)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Logout", "Login", "Users", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        }
+
+                    }
+
+                </ul>
+            </div>
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

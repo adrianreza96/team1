@@ -11,7 +11,9 @@ namespace FeastFreedom.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Kitchen
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,19 +22,44 @@ namespace FeastFreedom.Models
             this.Menus = new HashSet<Menu>();
             this.Menus1 = new HashSet<Menu>();
         }
-    
+
         public int KitchenId { get; set; }
+
+        [Required]
+        [Display(Name= "Kitchen Name")]
         public string KitchenName { get; set; }
+
         public Nullable<int> UserId { get; set; }
+
+        [Display(Name = "Working Days")]
         public string WorkingDays { get; set; }
-        public Nullable<System.DateTime> StartTime { get; set; }
-        public Nullable<System.DateTime> CloseTime { get; set; }
+
+        public DateTime StartTime { get; set; }
+
+        public DateTime CloseTime { get; set; }
+
         public string Image { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus1 { get; set; }
+
+        [NotMapped]
+        [Required]
+        [Display(Name = "Working Days")]
+        public string[] selectedDays { get; set; }
+
+        [NotMapped]
+        [Required]
+        [Display(Name = "Starting Time")]
+        public string timeStart { get; set; }
+
+        [NotMapped]
+        [Required]
+        [Display(Name = "Closing Time")]
+        public string timeClose { get; set; }
+
     }
 }

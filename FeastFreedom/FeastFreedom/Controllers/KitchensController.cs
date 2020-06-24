@@ -53,6 +53,7 @@ namespace FeastFreedom.Controllers
         // POST: Kitchens/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "KitchenId,KitchenName,UserId,WorkingDays,selectedDays,StartTime,timeStart,CloseTime,timeClose,Image")] Kitchen kitchen)
@@ -83,6 +84,7 @@ namespace FeastFreedom.Controllers
         }
 
         // GET: Kitchens/Edit/5
+        [AuthorizeFilter]
         public ActionResult Edit(int? id)
         {
             if (id == null)

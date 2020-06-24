@@ -14,13 +14,13 @@
 <body>
     <h2>Login</h2>
     <p>
-        @ViewBag.error;
+        @ViewBag.error
        
     </p>
     @using (Html.BeginForm()) {
         <div>
             <br />
-            <table>
+            <table style="display:inline">
                 <tr>
                     <td>@Html.LabelFor(model => model.Email)</td>
                     <td>@Html.EditorFor(model => model.Email)</td>
@@ -37,4 +37,13 @@
     }
 </body>
 </html>
+
+<style>
+    html, body {
+        margin: 20px;
+        height: 100%;
+        text-align: center;
+
+    }
+</style>
 

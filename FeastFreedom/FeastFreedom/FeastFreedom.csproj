@@ -158,6 +158,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>allModels.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AuthorizeFilter.cs" />
     <Compile Include="Models\Kitchen.cs">
       <DependentUpon>allModels.tt</DependentUpon>
     </Compile>

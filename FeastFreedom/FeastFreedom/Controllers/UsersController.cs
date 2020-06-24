@@ -78,7 +78,8 @@ namespace FeastFreedom.Controllers
                 if (users.First().Password == password) {
                     Session["Id"] = users.First().UserId;
                     Session["Email"] = users.First().Email;
-                    Session["Name"] = users.First().FirstName + " " + users.First().LastName;
+                    Session["Name"] = users.First().FirstName;
+                    Session["Role"] = users.First().RoleId;
                     ViewBag.Users = users.First();
                     if (Session["cart"] != null) {
                         if (Session["last"] != null) {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -45,7 +46,7 @@ namespace FeastFreedom.Controllers
         // GET: Kitchens/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName");
+            ViewBag.UserId = new SelectList(db.Users, Convert.ToInt32(Session["Id"]), (string)Session["Name"]);
             return View();
         }
 
@@ -54,18 +55,30 @@ namespace FeastFreedom.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KitchenId,KitchenName,UserId,WorkingDays,StartTime,CloseTime,Image")] Kitchen kitchen)
+        public ActionResult Create([Bind(Include = "KitchenId,KitchenName,UserId,WorkingDays,selectedDays,StartTime,timeStart,CloseTime,timeClose,Image")] Kitchen kitchen)
         {
+
             if (ModelState.IsValid)
             {
-                kitchen.StartTime = DateTime.Today;
-                kitchen.CloseTime = DateTime.Now;
+                if (kitchen.timeStart.Length < 8 || kitchen.timeClose.Length < 8)
+                {
+                    kitchen.StartTime = DateTime.ParseExact(kitchen.timeStart, "h:mm tt", null);
+                    kitchen.CloseTime = DateTime.ParseExact(kitchen.timeClose, "h:mm tt", null);
+
+                }
+                else
+                {
+                    kitchen.StartTime = DateTime.ParseExact(kitchen.timeStart, "hh:mm tt", null);
+                    kitchen.CloseTime = DateTime.ParseExact(kitchen.timeClose, "hh:mm tt", null);
+                }
+
+                kitchen.WorkingDays = string.Join(", ", kitchen.selectedDays);
                 db.Kitchens.Add(kitchen);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
+            ViewBag.UserId = new SelectList(db.Users, (string)Session["Id"], (string)Session["Name"], kitchen.UserId);
             return View(kitchen);
         }
 
@@ -81,7 +94,7 @@ namespace FeastFreedom.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
+            ViewBag.UserId = new SelectList(db.Users, (string)Session["Id"], (string)Session["Name"], kitchen.UserId);
             return View(kitchen);
         }
 
@@ -98,7 +111,7 @@ namespace FeastFreedom.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "FirstName", kitchen.UserId);
+            ViewBag.UserId = new SelectList(db.Users, (string)Session["Id"], (string)Session["Name"], kitchen.UserId);
             return View(kitchen);
         }
 

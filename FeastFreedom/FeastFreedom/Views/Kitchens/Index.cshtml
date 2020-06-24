@@ -10,31 +10,33 @@
 <div class="wrapper">
     @foreach (var item in Model)
     {
-        <div>
-            <a href="@Url.Action("MenusItems", "Menus", new { kitchenId = item.KitchenId })" class="thumbnail">
-                <img src="@item.Image" alt="@item.KitchenName" style="width:400px ; height:200px" />
-                @Html.DisplayFor(modelItem => item.KitchenName)
-                @Html.DisplayFor(modelItem => item.WorkingDays)
-                @{
-
-                }
-            </a>
-        </div>
+    <div>
+        <a href="@Url.Action("MenusItems", "Menus", new { kitchenId = item.KitchenId })" class="thumbnail">
+            <img src="@item.Image" alt="@item.KitchenName" style="width:400px ; height:200px" />
+            @Html.DisplayFor(modelItem => item.KitchenName)
+        </a>
+        @Html.DisplayFor(modelItem => item.WorkingDays)
+        @{
+            <p>@item.StartTime.ToString("hh:mm tt")</p>
+            <p>@item.CloseTime.ToString("hh:mm tt")</p>
+        }
+    </div>
     }
+
 </div>
 
 
 <style>
 
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: minmax(100px, auto);
-    column-gap: 10px;
-        
-}
-html, body {
-    margin: 10px;
-    height: 100%;
-}
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: minmax(100px, auto);
+        column-gap: 10px;
+    }
+
+    html, body {
+        margin: 10px;
+        height: 100%;
+    }
 </style>

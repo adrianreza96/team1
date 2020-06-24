@@ -16,7 +16,9 @@ namespace FeastFreedom.Models
     public partial class Order
     {
         public int OrderId { get; set; }
+
         public Nullable<int> UserId { get; set; }
+
         public Nullable<int> MenuId { get; set; }
         public int Quantity { get; set; }
         public int TotalPrice { get; set; }

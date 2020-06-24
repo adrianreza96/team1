@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using FeastFreedom.Models;
@@ -36,7 +37,7 @@ namespace FeastFreedom.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = db.Orders.Find(id);  //userid and isPaid
             if (order == null)
             {
                 return HttpNotFound();
@@ -151,6 +152,32 @@ namespace FeastFreedom.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public ActionResult SendEmail()
+        {
+            MailMessage mailtext = new MailMessage("nguluangel@gmail.com", (string)Session["Email"]);
+            mailtext.Subject = "FeastFreedom Order Confirmation";
+            mailtext.Body = "message to be sent";
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            //smtp.Port = 587;
+            smtp.UseDefaultCredentials = true;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new System.Net.NetworkCredential("nguluangel@gmail.com", "password");
+
+            try
+            {
+                smtp.Send(mailtext);
+                ViewData["Error"] = "Confirmation sent to year email";
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewData["Error"] = "Some Error";
+            }
+            return RedirectToAction("Index");
         }
     }
 }

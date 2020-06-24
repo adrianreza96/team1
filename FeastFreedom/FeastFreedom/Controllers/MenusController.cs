@@ -23,7 +23,11 @@ namespace FeastFreedom.Controllers
 
         public ActionResult MenusItems(int? kitchenId)
         {
-            var menu = db.Menus.Where(model => model.KitchenId == kitchenId).ToList();
+            var menu = db.Menus.Where(model => model.KitchenId == kitchenId).ToList(); ;
+
+            if (kitchenId == null)
+                menu = db.Menus.ToList();
+
             if (menu == null)
             {
                 return HttpNotFound();

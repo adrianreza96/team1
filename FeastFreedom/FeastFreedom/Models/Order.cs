@@ -11,7 +11,8 @@ namespace FeastFreedom.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Order
     {
         public int OrderId { get; set; }
@@ -20,6 +21,8 @@ namespace FeastFreedom.Models
         public int Quantity { get; set; }
         public int TotalPrice { get; set; }
         public System.DateTime OrderDate { get; set; }
+
+        [Required]
         public string ShippingAddress { get; set; }
     
         public virtual Menu Menu { get; set; }

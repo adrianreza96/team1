@@ -66,7 +66,7 @@ namespace FeastFreedom.Controllers
 
 
                 Session["count"] = 1;
-                return RedirectToAction("Login", "Users");
+                //return RedirectToAction("Login", "Users");
             }
             else
             {
@@ -77,7 +77,7 @@ namespace FeastFreedom.Controllers
                 Session["count"] = Convert.ToInt32(Session["count"]) + 1;
 
             }
-            return RedirectToAction("Index", "Kitchens");
+            return RedirectToAction("MenusItems", "Menus", new {KitchenId = menuItem.KitchenId });
         }
 
         // GET: Menus/Create

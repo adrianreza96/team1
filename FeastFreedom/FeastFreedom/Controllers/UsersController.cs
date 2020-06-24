@@ -62,7 +62,7 @@ namespace FeastFreedom.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login() {
+        public ActionResult Login() {           
             return View();
         }
 
@@ -80,14 +80,17 @@ namespace FeastFreedom.Controllers
                     Session["Email"] = users.First().Email;
                     Session["Name"] = users.First().FirstName + " " + users.First().LastName;
                     ViewBag.Users = users.First();
+                    if (Session["cart"] != null) {
+                        if (Session["last"] != null) {
+                            return RedirectToAction(Session["last"].ToString(), "Orders");
+                        }                        
+                    }
                     return RedirectToAction("Tester", "Home");
                 }
                 else {
                     ViewBag.error = "Invalid user credentials.  Please retry ";
                     return View();
-                }
-
-                
+                }              
             }
             else {
                 ViewBag.error = "Too many users retrieved";

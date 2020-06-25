@@ -27,8 +27,8 @@
           <Property Name="VeganFriendly" Type="varchar" MaxLength="20" />
           <Property Name="MenuType" Type="nvarchar" MaxLength="50" />
           <Property Name="Ingredients" Type="nvarchar(max)" />
-          <Property Name="Image" Type="image" />
           <Property Name="Price" Type="money" />
+          <Property Name="Image" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -226,8 +226,8 @@
           <Property Name="VeganFriendly" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MenuType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ingredients" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Kitchen" Relationship="feastfreedomModel.FK__Menu__KitchenId__412EB0B6" FromRole="Menu" ToRole="Kitchen" />
           <NavigationProperty Name="Kitchen1" Relationship="feastfreedomModel.fk_menu_kitchen" FromRole="Menu" ToRole="Kitchen" />
           <NavigationProperty Name="Orders" Relationship="feastfreedomModel.fk_order_menu" FromRole="Menu" ToRole="Order" />
@@ -365,8 +365,8 @@
           <EntitySetMapping Name="Menus">
             <EntityTypeMapping TypeName="feastfreedomModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
                 <ScalarProperty Name="MenuType" ColumnName="MenuType" />
                 <ScalarProperty Name="VeganFriendly" ColumnName="VeganFriendly" />

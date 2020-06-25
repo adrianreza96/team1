@@ -70,9 +70,11 @@
                         if (Session["Name"] != null)
                         {
                             <li class="nav-item">
-                                @Html.ActionLink("Logout", "Login", "Users", new { area = "" }, new { @class = "nav-link" })
+                                @Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "nav-link"})
                             </li>
                         }
+
+
                     }
 
 
@@ -85,6 +87,8 @@
     </div>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    
 </body>
 </html>
 

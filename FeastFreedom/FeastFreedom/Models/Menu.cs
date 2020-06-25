@@ -26,7 +26,7 @@ namespace FeastFreedom.Models
         public string VeganFriendly { get; set; }
         public string MenuType { get; set; }
         public string Ingredients { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
         public Nullable<decimal> Price { get; set; }
     
         public virtual Kitchen Kitchen { get; set; }

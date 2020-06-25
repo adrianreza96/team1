@@ -27,7 +27,7 @@
           <Property Name="VeganFriendly" Type="varchar" MaxLength="20" />
           <Property Name="MenuType" Type="nvarchar" MaxLength="50" />
           <Property Name="Ingredients" Type="nvarchar(max)" />
-          <Property Name="Image" Type="image" />
+          <Property Name="Image" Type="nvarchar(max)" />
           <Property Name="Price" Type="money" />
         </EntityType>
         <EntityType Name="Orders">
@@ -41,6 +41,7 @@
           <Property Name="IsPaid" Type="bit" />
           <Property Name="OrderDate" Type="datetime" />
           <Property Name="ShippingAddress" Type="nvarchar(max)" />
+          <Property Name="TotalPrice" Type="int" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -63,7 +64,7 @@
           <Property Name="SecurityQuestionTwo" Type="nvarchar" MaxLength="50" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
-        <Association Name="FK__Menu__KitchenId__412EB0B6">
+        <Association Name="FK__Menu__KitchenId__31EC6D26">
           <End Role="Kitchens" Type="Self.Kitchens" Multiplicity="0..1" />
           <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,7 +142,7 @@
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Menu__KitchenId__412EB0B6" Association="Self.FK__Menu__KitchenId__412EB0B6">
+          <AssociationSet Name="FK__Menu__KitchenId__31EC6D26" Association="Self.FK__Menu__KitchenId__31EC6D26">
             <End Role="Kitchens" EntitySet="Kitchens" />
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
@@ -226,7 +227,7 @@
           <Property Name="VeganFriendly" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MenuType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ingredients" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Image" Type="String" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="Kitchen" Relationship="feastfreedomModel.FK__Menu__KitchenId__412EB0B6" FromRole="Menu" ToRole="Kitchen" />
           <NavigationProperty Name="Kitchen1" Relationship="feastfreedomModel.fk_menu_kitchen" FromRole="Menu" ToRole="Kitchen" />
@@ -245,6 +246,7 @@
           <Property Name="ShippingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Menu" Relationship="feastfreedomModel.fk_order_menu" FromRole="Order" ToRole="Menu" />
           <NavigationProperty Name="User" Relationship="feastfreedomModel.fk_order_user" FromRole="Order" ToRole="User" />
+          <Property Name="TotalPrice" Type="Int32" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -379,6 +381,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="feastfreedomModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />

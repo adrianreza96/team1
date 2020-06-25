@@ -2,92 +2,173 @@
 
 @{
     ViewBag.Title = "Index";
-}
-    <div style="text-align:center;padding-left:60px">
-        <h4 style="padding: 30px 0px 10px">Thank you for your order</h4>
-        <hr style="border-top: 3px dotted palevioletred; width:5%">
 
+}
+<head>
+<meta content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Thank you for your order</h2>
         @{
-            if ((string)ViewData["Error"] == "Confirmation sent to year email")
+            if (ViewData["Success"] != null)
             {
-                <p style="padding: 0px 0px 10px; font-size:80%">@ViewData["Error"].</p>
+                <div class="form-group">
+                    <p style="padding: 0px 0px 10px 5px; font-size:80%">@ViewData["Success"].</p>
+                </div>
             }
             else
             {
-                <p style="padding: 0px 0px 10px; font-size:80%">We are processing your order now. Here are the details.</p>
+                <div class="form-group">
+                    <p style="padding: 0px 0px 10px 5px; font-size:80%">We are processing your order now. Here are the details.</p>
+                </div>
             }
         }
 
-        <p>Confirmation will be sent to: (string)@Session["Email"]</p>
-        <p>OrderDate: will be generated when order now from cart is clicked</p>
-        @*<p>Delivery Location: @Html.DisplayFor(model => model[0].ShippingAddress)</p>*@
-        <p>Total Price: XXXX</p>
-        @Html.ActionLink("Confirm", "SendEmail", "Orders")
+        @using (Html.BeginForm("SendEmail", "Orders", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Confirmation will be sent to:</label>
+                <div class="col-sm-10">
+                    <p style="padding: 7px 0px 0px;">@Session["Email"]</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Order Date:</label>
+                <div class="col-sm-10">
+                    <p style="padding: 7px 0px 0px;">To be generated form onclick order</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Billing Address:</label>
+                <div class="col-sm-10">
+                    <p style="padding: 7px 0px 0px;">To be displayed</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Shipping Address:</label>
+                <div class="col-sm-10">
+                    <p style="padding: 7px 0px 0px;">To be displayed</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Total Price:</label>
+                <div class="col-sm-10">
+                    <p style="padding: 7px 0px 0px;">To be displayed</p>
+                </div>
+            </div>
 
-        @{
-            if ((string)ViewData["Error"] == "Some Error")
+            if (ViewData["Success"] == null)
             {
-                <p>Email not sent</p>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-dark">Confirm Order</button>
+                    </div>
+                </div>
             }
-         }
+
+            if (ViewData["Error"] != null)
+            {
+                <div class="form-group form-form-row">
+                    <div class=" col-md-offset-2 col-md-10">
+                        <p>@ViewData["Error"]. Change email address in User profile.</p>
+                    </div>
+                </div>
+            }
+
+        }
     </div>
 
+    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:7px; height:7px; position:absolute; bottom:400px; left:55px; opacity:0.5">
+    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:10px; height:10px; position:absolute; bottom:380px; left:53px; opacity:0.6">
+    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:20px; height:20px; position:absolute; bottom:350px; left:47px; opacity:0.7">
+    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:30px; height:30px; position:absolute; bottom:310px; left:43px; opacity:0.8">
+    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:50px; height:50px; position:absolute; bottom:250px; left:35px; opacity:0.9">
+    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:100px; height:100px; position:absolute; bottom:140px; left:10px">
+
+    <script>
+        $(document).ready(function () {
+            var css = 'nav li a:hover{ background-color: transparent !important}';
+            var style = document.createElement('style');
+
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css;
+            } else {
+                style.appendChild(document.createTextNode(css));
+            }
+
+            document.getElementsByTagName('nav')[0].appendChild(style);
+
+            let element = document.getElementsByTagName("div")[2];
+            element.classList.remove("body-content");
+        });
+    </script>
+</body>
 
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsPaid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShippingAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Menu.ItemName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User.FirstName)
-            </th>
-            <th></th>
-        </tr>
 
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsPaid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShippingAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Menu.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FirstName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
-            </td>
-        </tr>
-    }
 
-    </table>
+@*
+    @Html.ActionLink("Click to Confirm", "Confirmation", null, new { onclick = "return ConfirmationDialog()" })
+    https://www.aspsnippets.com/Articles/Submit-Post-Form-using-ActionLink-in-ASPNet-MVC.aspx#:~:text=ActionLink%20is%20rendered%20as%20an%20HTML%20Anchor%20Tag%20(HyperLink)%20and,assigned%20and%20when%20the%20%40Html
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsPaid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Menu.ItemName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.FirstName)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsPaid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShippingAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Menu.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
+                </td>
+            </tr>
+        }
+
+        </table>
 
 *@

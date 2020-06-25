@@ -19,6 +19,9 @@ namespace FeastFreedom.Controllers
         public ActionResult Index()
         {
             var orders = db.Orders.Include(o => o.Menu).Include(o => o.User);
+
+            ViewData["Success"] = TempData["Success"];
+            ViewData["Error"] = TempData["Error"];
             return View(orders.ToList());
         }
 
@@ -137,25 +140,25 @@ namespace FeastFreedom.Controllers
         [HttpPost]
         public ActionResult SendEmail()
         {
-            MailMessage mailtext = new MailMessage("nguluangel@gmail.com", (string)Session["Email"]);
+            MailMessage mailtext = new MailMessage("feastfreed@gmail.com", "nguluangel@gmail.com");
             mailtext.Subject = "FeastFreedom Order Confirmation";
             mailtext.Body = "message to be sent";
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-            //smtp.Port = 587;
+            smtp.Port = 587;
             smtp.UseDefaultCredentials = true;
             smtp.EnableSsl = true;
-            smtp.Credentials = new System.Net.NetworkCredential("nguluangel@gmail.com", "password");
+            smtp.Credentials = new System.Net.NetworkCredential("feastfreed@gmail.com", "@feastfreedom");
 
             try
             {
                 smtp.Send(mailtext);
-                ViewData["Error"] = "Confirmation sent to year email";
+                TempData["Success"] = "Confirmation sent to your email";
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
-                ViewData["Error"] = "Some Error";
+                TempData["Error"] = "Invalid Email Account";
             }
             return RedirectToAction("Index");
         }

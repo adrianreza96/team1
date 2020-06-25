@@ -60,7 +60,7 @@ namespace FeastFreedom.Controllers
                 ViewBag.user = users.First();
                 return View();
             }
-            return View();
+            //return View();
         }
 
         // POST: Orders/Create

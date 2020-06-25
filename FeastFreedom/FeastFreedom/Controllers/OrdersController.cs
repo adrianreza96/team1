@@ -79,7 +79,7 @@ namespace FeastFreedom.Controllers
                 db.SaveChanges();
                 Session["cart"] = null;
                 Session["count"] = "";
-                return RedirectToAction("OrderConfirmed");
+                return RedirectToAction("Index");
             }
             return View(order);
         }

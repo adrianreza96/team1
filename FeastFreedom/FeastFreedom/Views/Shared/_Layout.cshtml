@@ -35,15 +35,47 @@
                     <li class="nav-item">
                         @Html.ActionLink("Menus", "MenusItems", "Menus", new { area = "" }, new { @class = "nav-link" })
                     </li>
+                    @{
+                        if (Session["Name"] == null)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("LogIn", "Login", "Users", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        }
+
+                        if (Convert.ToInt32(Session["Role"]) == 3)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Register Kitchen", "Create", "Kitchens", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        }
+
+                        if (Session["Name"] != null)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink((string)@Session["Name"], "Login", "Users", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+
+                        }
+                    }
+
                     <li class="nav-item">
-                        @Html.ActionLink("LogIn", "Login", "Users", new { area = "" }, new { @class = "nav-link" })
-                    </li>
-                    <li class="active">
-                        <a href="@Url.Action("cart", "Menus")" class="btn btn-info btn-lg">
+                        <a href="@Url.Action("cart", "Menus")" class="nav-link">
                             <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span>Cart
                             <span class="badge">@Session["count"]</span>
                         </a>
                     </li>
+
+                    @{
+                        if (Session["Name"] != null)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Logout", "Login", "Users", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        }
+                    }
+
+
                 </ul>
             </div>
         </div>

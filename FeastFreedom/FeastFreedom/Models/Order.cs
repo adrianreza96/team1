@@ -18,6 +18,8 @@ namespace FeastFreedom.Models
         public int OrderId { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<int> MenuId { get; set; }
+
+        [Required]
         public Nullable<int> Quantity { get; set; }
         public Nullable<bool> IsPaid { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }

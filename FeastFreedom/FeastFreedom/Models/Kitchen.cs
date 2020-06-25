@@ -26,7 +26,7 @@ namespace FeastFreedom.Models
         public int KitchenId { get; set; }
 
         [Required]
-        [Display(Name= "Kitchen Name")]
+        [Display(Name = "Kitchen Name")]
         public string KitchenName { get; set; }
 
         public Nullable<int> UserId { get; set; }
@@ -60,6 +60,5 @@ namespace FeastFreedom.Models
         [Required]
         [Display(Name = "Closing Time")]
         public string timeClose { get; set; }
-
     }
 }

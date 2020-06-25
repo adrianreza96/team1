@@ -19,7 +19,18 @@ namespace FeastFreedom.Controllers
         public ActionResult Index()
         {
             var orders = db.Orders.Include(o => o.Menu).Include(o => o.User);
+
+            ViewData["Success"] = TempData["Success"];
+            ViewData["Error"] = TempData["Error"];
             return View(orders.ToList());
+        }
+
+        public ActionResult Tester() {
+            if (Session["cart"] != null) {
+                List<Menu> items = Session["cart"] as List<Menu>;
+                return View(items);
+            }
+            return View();
         }
 
         // GET: Orders/Details/5
@@ -38,11 +49,18 @@ namespace FeastFreedom.Controllers
         }
 
         // GET: Orders/Create
-        public ActionResult Create()
-        {
-            ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName");
-            ViewBag.UserId = new SelectList(db.Users, Convert.ToInt32(Session["Id"]), (string)Session["Name"]);
-            return View();
+        public ActionResult Create() {        
+            if (Session["Id"]==null) {
+                Session["last"] = "Create";
+                return RedirectToAction("Login", "Users");
+            }
+            else {  // user authenticated
+                int id = Int32.Parse(Session["Id"].ToString());
+                IEnumerable<User> users = (from u in db.Users where u.UserId == id select u).ToList<User>();
+                ViewBag.user = users.First();
+                return View();
+            }
+            //return View();
         }
 
         // POST: Orders/Create
@@ -50,20 +68,25 @@ namespace FeastFreedom.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,UserId,MenuId,Quantity,IsPaid,OrderDate,ShippingAddress")] Order order)
-        {
+        public ActionResult Create([Bind(Include = "OrderId,UserId,MenuId,Quantity,IsPaid,OrderDate,ShippingAddress")] Order order) {
+            int id = Int32.Parse(Session["Id"].ToString()); ;
+            IEnumerable<User> users = (from u in db.Users where u.UserId == id select u).ToList<User>();
+            ViewBag.user = users.First();
             if (ModelState.IsValid)
             {
+                order.UserId = id;
                 db.Orders.Add(order);
                 db.SaveChanges();
+                Session["cart"] = null;
+                Session["count"] = "";
                 return RedirectToAction("Index");
             }
-
-            ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName", order.MenuId);
-            ViewBag.UserId = new SelectList(db.Users, (string)Session["Id"], (string)Session["Name"], order.UserId);
             return View(order);
         }
 
+        public ActionResult OrderConfirmed() {
+            return View();
+        }
         // GET: Orders/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -137,25 +160,25 @@ namespace FeastFreedom.Controllers
         [HttpPost]
         public ActionResult SendEmail()
         {
-            MailMessage mailtext = new MailMessage("nguluangel@gmail.com", (string)Session["Email"]);
+            MailMessage mailtext = new MailMessage("feastfreed@gmail.com", "nguluangel@gmail.com");
             mailtext.Subject = "FeastFreedom Order Confirmation";
             mailtext.Body = "message to be sent";
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-            //smtp.Port = 587;
+            smtp.Port = 587;
             smtp.UseDefaultCredentials = true;
             smtp.EnableSsl = true;
-            smtp.Credentials = new System.Net.NetworkCredential("nguluangel@gmail.com", "password");
+            smtp.Credentials = new System.Net.NetworkCredential("feastfreed@gmail.com", "@feastfreedom");
 
             try
             {
                 smtp.Send(mailtext);
-                ViewData["Error"] = "Confirmation sent to year email";
+                TempData["Success"] = "Confirmation sent to your email";
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
-                ViewData["Error"] = "Some Error";
+                TempData["Error"] = "Invalid Email Account";
             }
             return RedirectToAction("Index");
         }

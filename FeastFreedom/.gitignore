@@ -5,6 +5,8 @@ project.lock.json
 *.pyc
 nupkg/
 
+Web.config
+
 # Visual Studio Code
 .vscode
 
@@ -32,7 +34,6 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
-Models/
 
 # Visual Studio 2015
 .vs/

@@ -35,8 +35,6 @@
                     <li class="nav-item">
                         @Html.ActionLink("Menus", "MenusItems", "Menus", new { area = "" }, new { @class = "nav-link" })
                     </li>
-
-
                     @{
                         if (Session["Name"] == null)
                         {
@@ -59,25 +57,24 @@
                             </li>
 
                         }
+                    }
 
-                        if (Convert.ToInt32(Session["Role"]) == 2)
-                        {
-                            <li class="nav-item">
-                                <a href="@Url.Action("cart", "Menus")" class="nav-link">
-                                    <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span>Cart
-                                    <span class="badge">@Session["count"]</span>
-                                </a>
-                            </li>
-                        }
+                    <li class="nav-item">
+                        <a href="@Url.Action("cart", "Menus")" class="nav-link">
+                            <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span>Cart
+                            <span class="badge">@Session["count"]</span>
+                        </a>
+                    </li>
 
+                    @{
                         if (Session["Name"] != null)
                         {
                             <li class="nav-item">
                                 @Html.ActionLink("Logout", "Login", "Users", new { area = "" }, new { @class = "nav-link" })
                             </li>
                         }
-
                     }
+
 
                 </ul>
             </div>

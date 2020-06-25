@@ -1,8 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\FeastFreedom"
+    "\\FeastFreedom",
+    "\\FeastFreedom\\FeastFreedom",
+    "\\FeastFreedom\\FeastFreedom\\Controllers",
+    "\\FeastFreedom\\FeastFreedom\\Views",
+    "\\FeastFreedom\\FeastFreedom\\Views\\Kitchens",
+    "\\FeastFreedom\\FeastFreedom\\Views\\Menus",
+    "\\FeastFreedom\\FeastFreedom\\Views\\Users"
   ],
-  "SelectedNode": "\\FeastFreedom\\FeastFreedom.sln",
+  "SelectedNode": "\\FeastFreedom\\FeastFreedom\\Controllers\\KitchensController.cs",
   "PreviewInSolutionExplorer": false
 }

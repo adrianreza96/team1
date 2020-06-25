@@ -189,6 +189,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\pink.jpg" />
     <Content Include="Images\spoons.jpg" />
     <Content Include="Images\spoon_cereal.jpg" />
     <Content Include="Models\allModels.Context.tt">

@@ -71,10 +71,17 @@ else
                     @Html.ActionLink("Details", "Details", new { id = item.MenuId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.MenuId })
                 </td>
-            </tr>
+            </tr>          
         }
-
     </table>
+    <div>
+        @{ 
+            List<FeastFreedom.Models.Menu> menu = Model.ToList();
+        }
+        <a id="btn_add" href="@Url.Action("Create", "Orders")" class="btn btn-info btn-lg" style="margin-left:60px">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Check Out
+        </a>
+    </div>
 }
 <style>
     #image {

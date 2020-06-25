@@ -25,6 +25,14 @@ namespace FeastFreedom.Controllers
             return View(orders.ToList());
         }
 
+        public ActionResult Tester() {
+            if (Session["cart"] != null) {
+                List<Menu> items = Session["cart"] as List<Menu>;
+                return View(items);
+            }
+            return View();
+        }
+
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
@@ -41,10 +49,17 @@ namespace FeastFreedom.Controllers
         }
 
         // GET: Orders/Create
-        public ActionResult Create()
-        {
-            ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName");
-            ViewBag.UserId = new SelectList(db.Users, Convert.ToInt32(Session["Id"]), (string)Session["Name"]);
+        public ActionResult Create() {        
+            if (Session["Id"]==null) {
+                Session["last"] = "Create";
+                return RedirectToAction("Login", "Users");
+            }
+            else {  // user authenticated
+                int id = Int32.Parse(Session["Id"].ToString());
+                IEnumerable<User> users = (from u in db.Users where u.UserId == id select u).ToList<User>();
+                ViewBag.user = users.First();
+                return View();
+            }
             return View();
         }
 
@@ -53,20 +68,25 @@ namespace FeastFreedom.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,UserId,MenuId,Quantity,IsPaid,OrderDate,ShippingAddress")] Order order)
-        {
+        public ActionResult Create([Bind(Include = "OrderId,UserId,MenuId,Quantity,IsPaid,OrderDate,ShippingAddress")] Order order) {
+            int id = Int32.Parse(Session["Id"].ToString()); ;
+            IEnumerable<User> users = (from u in db.Users where u.UserId == id select u).ToList<User>();
+            ViewBag.user = users.First();
             if (ModelState.IsValid)
             {
+                order.UserId = id;
                 db.Orders.Add(order);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Session["cart"] = null;
+                Session["count"] = "";
+                return RedirectToAction("OrderConfirmed");
             }
-
-            ViewBag.MenuId = new SelectList(db.Menus, "MenuId", "ItemName", order.MenuId);
-            ViewBag.UserId = new SelectList(db.Users, (string)Session["Id"], (string)Session["Name"], order.UserId);
             return View(order);
         }
 
+        public ActionResult OrderConfirmed() {
+            return View();
+        }
         // GET: Orders/Edit/5
         public ActionResult Edit(int? id)
         {

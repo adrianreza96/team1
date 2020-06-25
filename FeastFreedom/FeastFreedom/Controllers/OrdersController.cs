@@ -60,7 +60,7 @@ namespace FeastFreedom.Controllers
                 ViewBag.user = users.First();
                 return View();
             }
-            return View();
+            //return View();
         }
 
         // POST: Orders/Create
@@ -79,7 +79,7 @@ namespace FeastFreedom.Controllers
                 db.SaveChanges();
                 Session["cart"] = null;
                 Session["count"] = "";
-                return RedirectToAction("OrderConfirmed");
+                return RedirectToAction("Index");
             }
             return View(order);
         }

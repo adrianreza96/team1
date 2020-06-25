@@ -17,7 +17,8 @@
         </a>
         @Html.DisplayFor(modelItem => item.WorkingDays)
         @{
-
+            <p>@item.StartTime.ToString("hh:mm tt")</p>
+            <p>@item.CloseTime.ToString("hh:mm tt")</p>
         }
     </div>
     }

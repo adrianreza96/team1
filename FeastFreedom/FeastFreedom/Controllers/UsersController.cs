@@ -54,7 +54,8 @@ namespace FeastFreedom.Controllers
             {               
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Login");
             }
 
             ViewBag.RoleId = new SelectList(db.Roles, "RoleId", "Role1", user.RoleId);
@@ -86,7 +87,7 @@ namespace FeastFreedom.Controllers
                             return RedirectToAction(Session["last"].ToString(), "Orders");
                         }                        
                     }
-                    return RedirectToAction("Tester", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else {
                     ViewBag.error = "Invalid user credentials.  Please retry ";

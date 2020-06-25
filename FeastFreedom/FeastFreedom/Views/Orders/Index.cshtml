@@ -104,6 +104,17 @@
 
             let element = document.getElementsByTagName("div")[2];
             element.classList.remove("body-content");
+
+            var css1 = 'nav li a:focus{ background-color: transparent !important}';
+            var style1 = document.createElement('style');
+
+            if (style1.styleSheet) {
+                style1.styleSheet.cssText = css1;
+            } else {
+                style1.appendChild(document.createTextNode(css1));
+            }
+
+            document.getElementsByTagName('nav')[0].appendChild(style);
         });
     </script>
 </body>

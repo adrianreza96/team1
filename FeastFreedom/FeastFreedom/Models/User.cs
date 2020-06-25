@@ -55,13 +55,14 @@ namespace FeastFreedom.Models
         [Display(Name = "Billing Address")]
         public string BillingAddress { get; set; }
 
-        [Display(Name = "What is your birth date?")]
+        [Display(Name = "Security Question: What is your birth date?")]
         public string SecurityQuestionOne { get; set; }
 
-        [Display(Name = "What is your birth town?")]
+        [Display(Name = "Security Question: What is your birth town?")]
         public string SecurityQuestionTwo { get; set; }
 
         [DefaultValue(1)]
+        [Display(Name = "Create Account as a")]
         public Nullable<int> RoleId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

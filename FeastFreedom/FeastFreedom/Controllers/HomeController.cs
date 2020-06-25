@@ -13,6 +13,14 @@ namespace FeastFreedom.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            Session["Id"] = null;
+            Session["Name"] = null;
+            Session["Email"] = null;
+            return View("Index");
+        }
+
         public ActionResult Tester() {
             return View();
         }

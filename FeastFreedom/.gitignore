@@ -37,3 +37,4 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+.vs/FeastFreedom/config/applicationhost.config

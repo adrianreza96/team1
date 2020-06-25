@@ -68,8 +68,9 @@ namespace FeastFreedom.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,UserId,MenuId,Quantity,IsPaid,OrderDate,ShippingAddress")] Order order) {
-            int id = Int32.Parse(Session["Id"].ToString()); ;
+        //public ActionResult Create([Bind(Include = "OrderId,UserId,MenuId,Quantity,IsPaid,OrderDate,ShippingAddress")] Order order) {
+        public ActionResult Create([Bind(Include = "OrderDate,ShippingAddress")] Order order) {
+                int id = Int32.Parse(Session["Id"].ToString()); ;
             IEnumerable<User> users = (from u in db.Users where u.UserId == id select u).ToList<User>();
             ViewBag.user = users.First();
             if (ModelState.IsValid)
@@ -79,7 +80,8 @@ namespace FeastFreedom.Controllers
                 db.SaveChanges();
                 Session["cart"] = null;
                 Session["count"] = "";
-                return RedirectToAction("Index");
+                Session["last"] = "checkedout";
+                return RedirectToAction("SendEmail");
             }
             return View(order);
         }
@@ -157,7 +159,6 @@ namespace FeastFreedom.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpPost]
         public ActionResult SendEmail()
         {
             MailMessage mailtext = new MailMessage("feastfreed@gmail.com", "nguluangel@gmail.com");

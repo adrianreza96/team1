@@ -258,4 +258,3 @@ C:\Users\MURZIK\Documents\Visual Studio 2019\ProjectsII\Team_EF\FeastFreedom\Fea
 C:\Users\MURZIK\Documents\Visual Studio 2019\ProjectsII\Team_EF\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csproj.CopyComplete
 C:\Users\MURZIK\Documents\Visual Studio 2019\ProjectsII\Team_EF\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.dll
 C:\Users\MURZIK\Documents\Visual Studio 2019\ProjectsII\Team_EF\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.pdb
-C:\Users\MURZIK\Documents\Visual Studio 2019\ProjectsII\Team_EF\FeastFreedom\FeastFreedom\obj\Debug\FeastFreedom.csprojAssemblyReference.cache

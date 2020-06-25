@@ -11,10 +11,7 @@ namespace FeastFreedom.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,46 +20,17 @@ namespace FeastFreedom.Models
             this.Kitchens = new HashSet<Kitchen>();
             this.Orders = new HashSet<Order>();
         }
-
+    
         public int UserId { get; set; }
-
-        [Required]
-        [Display(Name = "First Name")]
-        [StringLength(50, ErrorMessage = "Must be at least 2 characters", MinimumLength = 2)]
         public string FirstName { get; set; }
-
-        [Required]
-        [Display(Name = "Last Name")]
-        [StringLength(50, ErrorMessage = "Must be at least 2 characters", MinimumLength = 2)]
         public string LastName { get; set; }
-
-        [Required]
-        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        [Required]
-        [NotMapped]
-        [Display(Name = "Confirm Password")]
-        [DataType(DataType.Password)]
-        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
-
-        [Display(Name = "Billing Address")]
         public string BillingAddress { get; set; }
-
-        [Display(Name = "What is your birth date?")]
         public string SecurityQuestionOne { get; set; }
-
-        [Display(Name = "What is your birth town?")]
         public string SecurityQuestionTwo { get; set; }
-
-        [DefaultValue(1)]
         public Nullable<int> RoleId { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kitchen> Kitchens { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -6,13 +6,10 @@
 }
 <head>
 <meta content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h2>Thank you for your order</h2>
+    <div class="container" style="padding-left:30%">
+        <h2 style="padding-top: 4%">Thank you for your order</h2>
         @{
             if (ViewData["Success"] != null)
             {
@@ -30,41 +27,41 @@
 
         @using (Html.BeginForm("SendEmail", "Orders", FormMethod.Post, new { @class = "form-horizontal" }))
         {
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="email">Confirmation will be sent to:</label>
-                <div class="col-sm-10">
+            <div class="form-group row">
+                <label class="control-label col-md-4" style="text-align:right; font-weight:bold">Confirmation will be sent to:</label>
+                <div class="col-md-4">
                     <p style="padding: 7px 0px 0px;">@Session["Email"]</p>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Order Date:</label>
-                <div class="col-sm-10">
+            <div class="form-group row">
+                <label class="control-label col-md-4" style="text-align:right; font-weight:bold">Order Date:</label>
+                <div class="col-md-4">
                     <p style="padding: 7px 0px 0px;">To be generated form onclick order</p>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Billing Address:</label>
-                <div class="col-sm-10">
+            <div class="form-group row">
+                <label class="control-label col-md-4" style="text-align:right; font-weight:bold">Billing Address:</label>
+                <div class="col-md-4">
                     <p style="padding: 7px 0px 0px;">To be displayed</p>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Shipping Address:</label>
-                <div class="col-sm-10">
+            <div class="form-group row">
+                <label class="control-label col-md-4" style="text-align:right; font-weight:bold">Shipping Address:</label>
+                <div class="col-md-4">
                     <p style="padding: 7px 0px 0px;">To be displayed</p>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Total Price:</label>
-                <div class="col-sm-10">
+            <div class="form-group row">
+                <label class="control-label col-md-4" style="text-align:right; font-weight:bold">Total Price:</label>
+                <div class="col-md-4">
                     <p style="padding: 7px 0px 0px;">To be displayed</p>
                 </div>
             </div>
 
             if (ViewData["Success"] == null)
             {
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                <div class="form-group row">
+                    <div class="col-md-4" style="text-align:right">
                         <button type="submit" class="btn btn-dark">Confirm Order</button>
                     </div>
                 </div>
@@ -72,8 +69,8 @@
 
             if (ViewData["Error"] != null)
             {
-                <div class="form-group form-form-row">
-                    <div class=" col-md-offset-2 col-md-10">
+                <div class="form-group row">
+                    <div class="col-md-4" style="text-align:right">
                         <p>@ViewData["Error"]. Change email address in User profile.</p>
                     </div>
                 </div>
@@ -82,41 +79,11 @@
         }
     </div>
 
-    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:7px; height:7px; position:absolute; bottom:400px; left:55px; opacity:0.5">
-    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:10px; height:10px; position:absolute; bottom:380px; left:53px; opacity:0.6">
-    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:20px; height:20px; position:absolute; bottom:350px; left:47px; opacity:0.7">
-    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:30px; height:30px; position:absolute; bottom:310px; left:43px; opacity:0.8">
-    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:50px; height:50px; position:absolute; bottom:250px; left:35px; opacity:0.9">
-    <img src="~/Images/carrot.jpg" alt="Avatar" style="border-radius: 52%; width:100px; height:100px; position:absolute; bottom:140px; left:10px">
+    <img src="~/Images/pizzah.jpg" alt="Avatar" style="border-radius: 52%; width:7px; height:7px; position:relative; bottom:10px; left:90%; opacity:0.7">
+    <img src="~/Images/pizzah.jpg" alt="Avatar" style="border-radius: 52%; width:10px; height:10px; position:relative; bottom:50px; left:91%; opacity:0.8">
+    <img src="~/Images/pizzah.jpg" alt="Avatar" style="border-radius: 52%; width:20px; height:20px; position:relative; bottom:80px; left:92.5%; opacity:0.9">
+    <img src="~/Images/pizzah.jpg" alt="Avatar" style="border-radius: 52%; width:30px; height:30px; position:relative; bottom:120px; left:95%">
 
-    <script>
-        $(document).ready(function () {
-            var css = 'nav li a:hover{ background-color: transparent !important}';
-            var style = document.createElement('style');
-
-            if (style.styleSheet) {
-                style.styleSheet.cssText = css;
-            } else {
-                style.appendChild(document.createTextNode(css));
-            }
-
-            document.getElementsByTagName('nav')[0].appendChild(style);
-
-            let element = document.getElementsByTagName("div")[2];
-            element.classList.remove("body-content");
-
-            var css1 = 'nav li a:focus{ background-color: transparent !important}';
-            var style1 = document.createElement('style');
-
-            if (style1.styleSheet) {
-                style1.styleSheet.cssText = css1;
-            } else {
-                style1.appendChild(document.createTextNode(css1));
-            }
-
-            document.getElementsByTagName('nav')[0].appendChild(style);
-        });
-    </script>
 </body>
 
 

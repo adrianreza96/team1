@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/jquery")
 
     <link href="https://fonts.googleapis.com/css2?family=Ruthie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
@@ -53,7 +54,7 @@
                         if (Session["Name"] != null)
                         {
                             <li class="nav-item">
-                                @Html.ActionLink((string)@Session["Name"], "Login", "Users", new { area = "" }, new { @class = "nav-link" })
+                                @Html.ActionLink((string)@Session["Name"], "Details", "Users", new { area = "" }, new { @class = "nav-link" })
                             </li>
 
                         }
@@ -62,7 +63,7 @@
                         {
                             <li class="nav-item">
                                 <a href="@Url.Action("cart", "Menus")" class="nav-link">
-                                    <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span>Cart
+                                    <span class="fa fa-opencart"></span>
                                     <span class="badge">@Session["count"]</span>
                                 </a>
                             </li>

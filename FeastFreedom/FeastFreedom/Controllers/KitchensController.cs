@@ -78,7 +78,7 @@ namespace FeastFreedom.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, (string)Session["Id"], (string)Session["Name"], kitchen.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "UserId", (string)Session["Name"], kitchen.UserId);
             return View(kitchen);
         }
 

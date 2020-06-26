@@ -3,80 +3,71 @@
 @{
     ViewBag.Title = "Details";
 }
+<head>
+    <meta content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="container" style="font-size:14px">
+        <h2 style="padding-top: 25px"><center>@Session["Name"]'s Profile</center></h2><br>
 
-<h2>Details</h2>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group row">
+                <label class="control-label col-md-6" style="text-align:right; font-weight:bold">Name</label>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-6" style="text-align:right; font-weight:bold">Registered as:</label>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.Role.Role1)
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-6" style="text-align:right; font-weight:bold">Email Address:</label>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.Email)
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-6" style="text-align:right; font-weight:bold">Password:</label>
+                <div class="col-md-6">
+                    @Html.Raw("\u2022\u2022\u2022\u2022\u2022")
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-6" style="text-align:right; font-weight:bold">Billing Address:</label>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.BillingAddress)
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-md-6" style="text-align:right; font-weight:bold">Security Question: Your birth date:</label>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.SecurityQuestionOne)
+                </div>
+            </div>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+            <div class="form-group row">
+                <label class="control-label col-md-6" style="text-align:right; font-weight:bold">Security Question: Your birth city:</label>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.SecurityQuestionTwo)
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <div class="form-group">
+                <div class="col-md-6" style="text-align:right">
+                    @Html.ActionLink("Edit", "Edit", new { @class = "btn btn-dark", id = Model.UserId })
+                </div>
+            </div>
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+    <img src="~/Images/pizzah.jpg" alt="Avatar" style="border-radius: 52%; width:7px; height:7px; position:relative; bottom:10px; left:90%; opacity:0.7">
+    <img src="~/Images/pizzah.jpg" alt="Avatar" style="border-radius: 52%; width:10px; height:10px; position:relative; bottom:50px; left:91%; opacity:0.8">
+    <img src="~/Images/pizzah.jpg" alt="Avatar" style="border-radius: 52%; width:20px; height:20px; position:relative; bottom:80px; left:92.5%; opacity:0.9">
+    <img src="~/Images/pizzah.jpg" alt="Avatar" style="border-radius: 52%; width:30px; height:30px; position:relative; bottom:120px; left:95%">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BillingAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BillingAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SecurityQuestionOne)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SecurityQuestionOne)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SecurityQuestionTwo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SecurityQuestionTwo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Role.Role1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Role.Role1)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</body>

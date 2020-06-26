@@ -24,16 +24,23 @@ namespace FeastFreedom.Controllers
         // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (id == null && @Session["Id"] == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            if (id == null && @Session["Id"] != null)
+            {
+                id = Convert.ToInt32(@Session["Id"]);
+            }
+
             User user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
             return View(user);
+
         }
 
         // GET: Users/Create

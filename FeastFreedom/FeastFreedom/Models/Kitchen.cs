@@ -24,10 +24,18 @@ namespace FeastFreedom.Models
         }
     
         public int KitchenId { get; set; }
+        [Required]
+        [Display(Name = "Kitchen Name")]
         public string KitchenName { get; set; }
         public Nullable<int> UserId { get; set; }
+        [Required]
+        [Display(Name = "Working Days")]
         public string WorkingDays { get; set; }
+        [Required]
+        [Display(Name = "Starting Time")]
         public DateTime StartTime { get; set; }
+        [Required]
+        [Display(Name = "Closing Time")]
         public DateTime CloseTime { get; set; }
         public string Image { get; set; }
     
@@ -36,6 +44,7 @@ namespace FeastFreedom.Models
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus1 { get; set; }
+
         [NotMapped]
         [Required]
         [Display(Name = "Working Days")]

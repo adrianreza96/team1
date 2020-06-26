@@ -187,6 +187,7 @@
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\tpicker.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -287,6 +288,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\tpicker.js" />
     <Content Include="Views\Shared\fast-foods-candy-cookies-pastries-768.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -328,6 +330,8 @@
     <Content Include="Views\Orders\Tester.cshtml" />
     <Content Include="Views\Orders\OrderConfirmed.cshtml" />
     <Content Include="Views\Users\UnAuthorized.cshtml" />
+    <Content Include="Scripts\moment.min.js.map" />
+    <Content Include="Scripts\moment-with-locales.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,9 +26,7 @@ else
             <th>
                 @Html.DisplayNameFor(model => model.Ingredients)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
@@ -56,9 +54,7 @@ else
                 <td>
                     @Html.DisplayFor(modelItem => item.Ingredients)
                 </td>
-                <td id="image">
-                    @Html.DisplayFor(modelItem => item.Image)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
@@ -67,9 +63,8 @@ else
                 </td>
                 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MenuId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.MenuId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MenuId })
+                    @Html.ActionLink("Remove", "Remove", new { id = item.MenuId })
                 </td>
             </tr>          
         }

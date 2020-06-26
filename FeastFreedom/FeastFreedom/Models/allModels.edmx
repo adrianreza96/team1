@@ -15,7 +15,7 @@
           <Property Name="WorkingDays" Type="nvarchar" MaxLength="50" />
           <Property Name="StartTime" Type="smalldatetime" />
           <Property Name="CloseTime" Type="smalldatetime" />
-          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -28,7 +28,7 @@
           <Property Name="MenuType" Type="nvarchar" MaxLength="50" />
           <Property Name="Ingredients" Type="nvarchar(max)" />
           <Property Name="Price" Type="money" />
-          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -37,10 +37,11 @@
           <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="MenuId" Type="int" />
-          <Property Name="Quantity" Type="int" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="ShippingAddress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IsPaid" Type="bit" />
-          <Property Name="OrderDate" Type="datetime" />
-          <Property Name="ShippingAddress" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -63,7 +64,7 @@
           <Property Name="SecurityQuestionTwo" Type="nvarchar" MaxLength="50" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
-        <Association Name="FK__Menu__KitchenId__412EB0B6">
+        <Association Name="FK__Menu__KitchenId__3E52440B">
           <End Role="Kitchens" Type="Self.Kitchens" Multiplicity="0..1" />
           <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,7 +142,7 @@
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Menu__KitchenId__412EB0B6" Association="Self.FK__Menu__KitchenId__412EB0B6">
+          <AssociationSet Name="FK__Menu__KitchenId__3E52440B" Association="Self.FK__Menu__KitchenId__3E52440B">
             <End Role="Kitchens" EntitySet="Kitchens" />
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
@@ -211,7 +212,7 @@
           <Property Name="WorkingDays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="StartTime" Type="DateTime" Precision="0" />
           <Property Name="CloseTime" Type="DateTime" Precision="0" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Menus" Relationship="feastfreedomModel.FK__Menu__KitchenId__412EB0B6" FromRole="Kitchen" ToRole="Menu" />
           <NavigationProperty Name="User" Relationship="feastfreedomModel.fk_kitchen_user" FromRole="Kitchen" ToRole="User" />
           <NavigationProperty Name="Menus1" Relationship="feastfreedomModel.fk_menu_kitchen" FromRole="Kitchen" ToRole="Menu" />
@@ -227,7 +228,7 @@
           <Property Name="MenuType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ingredients" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Kitchen" Relationship="feastfreedomModel.FK__Menu__KitchenId__412EB0B6" FromRole="Menu" ToRole="Kitchen" />
           <NavigationProperty Name="Kitchen1" Relationship="feastfreedomModel.fk_menu_kitchen" FromRole="Menu" ToRole="Kitchen" />
           <NavigationProperty Name="Orders" Relationship="feastfreedomModel.fk_order_menu" FromRole="Menu" ToRole="Order" />
@@ -239,12 +240,13 @@
           <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="MenuId" Type="Int32" />
-          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="IsPaid" Type="Boolean" />
-          <Property Name="OrderDate" Type="DateTime" Precision="3" />
-          <Property Name="ShippingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="ShippingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Menu" Relationship="feastfreedomModel.fk_order_menu" FromRole="Order" ToRole="Menu" />
           <NavigationProperty Name="User" Relationship="feastfreedomModel.fk_order_user" FromRole="Order" ToRole="User" />
+          <Property Name="TotalPrice" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -379,6 +381,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="feastfreedomModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />

@@ -20,7 +20,7 @@ namespace FeastFreedom.Models
         {
             this.Orders = new HashSet<Order>();
         }
-    
+
         public int MenuId { get; set; }
         public Nullable<int> KitchenId { get; set; }
 
@@ -39,7 +39,7 @@ namespace FeastFreedom.Models
         public Nullable<decimal> Price { get; set; }
 
         public string Image { get; set; }
-    
+
         public virtual Kitchen Kitchen { get; set; }
         public virtual Kitchen Kitchen1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

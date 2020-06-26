@@ -50,7 +50,6 @@ namespace FeastFreedom.Controllers
             return View(menu);
         }
 
-        [AuthenticationFilter]
         public ActionResult cart()
         {
             List<Menu> items = (List<Menu>)Session["cart"];
@@ -58,7 +57,6 @@ namespace FeastFreedom.Controllers
             return View(items);
         }
         
-        [AuthorizeFilter("customer","admin")]
         public ActionResult Add(Menu menuItem)
         {
             if (Session["cart"] == null)
@@ -83,6 +81,31 @@ namespace FeastFreedom.Controllers
 
             }
             return RedirectToAction("MenusItems", "Menus", new {KitchenId = menuItem.KitchenId });
+        }
+
+        public ActionResult Remove(Menu menuItem)
+        {
+            if (Session["cart"] == null)
+            {
+                
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                List<Menu> li = (List<Menu>)Session["cart"];
+                foreach(Menu item in li)
+                {
+                    if(item.MenuId == menuItem.MenuId)
+                    {
+                        li.Remove(menuItem);
+                    }
+                }
+                Session["cart"] = li;
+                ViewBag.cart = li.Count();
+                Session["count"] = Convert.ToInt32(Session["count"]) - 1;
+
+            }
+            return RedirectToAction("cart", "Menus");
         }
 
         // GET: Menus/Create

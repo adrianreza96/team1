@@ -13,7 +13,7 @@ namespace FeastFreedom.Models
     {  
         public void OnAuthentication(AuthenticationContext filterContext)  
         {  
-            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["UserName"])))  
+            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["Id"])))  
             {  
                 filterContext.Result = new HttpUnauthorizedResult();  
             }  

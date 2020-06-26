@@ -23,7 +23,7 @@ namespace FeastFreedom.Models
             this.Kitchens = new HashSet<Kitchen>();
             this.Orders = new HashSet<Order>();
         }
-    
+
         public int UserId { get; set; }
 
         [Required]

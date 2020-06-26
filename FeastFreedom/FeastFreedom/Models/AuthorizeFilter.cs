@@ -20,11 +20,11 @@ namespace FeastFreedom.Models
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             bool authorize = false;
-            var userId = Convert.ToString(httpContext.Session["UserId"]);
+            var userId = Convert.ToString(httpContext.Session["Id"]);
             if (!string.IsNullOrEmpty(userId))
             {
-
-                User user = db.Users.Find(userId);
+                var id = Convert.ToInt32(userId);
+                User user = db.Users.Find(id);
 
                 foreach (var role in allowedroles)
                 {

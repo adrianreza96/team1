@@ -50,6 +50,7 @@ namespace FeastFreedom.Controllers
             return View(menu);
         }
 
+        [AuthenticationFilter]
         public ActionResult cart()
         {
             List<Menu> items = (List<Menu>)Session["cart"];
@@ -57,7 +58,7 @@ namespace FeastFreedom.Controllers
             return View(items);
         }
         
-        
+        [AuthorizeFilter("customer","admin")]
         public ActionResult Add(Menu menuItem)
         {
             if (Session["cart"] == null)

@@ -158,6 +158,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>allModels.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AuthenticationFilter.cs" />
+    <Compile Include="Models\AuthorizeFilter.cs" />
     <Compile Include="Models\Kitchen.cs">
       <DependentUpon>allModels.tt</DependentUpon>
     </Compile>
@@ -324,6 +326,7 @@
     <Content Include="Views\Home\Tester.cshtml" />
     <Content Include="Views\Orders\Tester.cshtml" />
     <Content Include="Views\Orders\OrderConfirmed.cshtml" />
+    <Content Include="Views\Users\UnAuthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

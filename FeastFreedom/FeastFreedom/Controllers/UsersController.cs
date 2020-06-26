@@ -148,6 +148,13 @@ namespace FeastFreedom.Controllers
             return View(user);
         }
 
+        public ActionResult UnAuthorized()
+        {
+            ViewBag.Message = "Unauthorized User";
+
+            return View();
+        }
+
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

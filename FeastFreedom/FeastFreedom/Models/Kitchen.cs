@@ -22,15 +22,27 @@ namespace FeastFreedom.Models
             this.Menus = new HashSet<Menu>();
             this.Menus1 = new HashSet<Menu>();
         }
-    
+
         public int KitchenId { get; set; }
+
+        [Required]
+        [Display(Name = "Kitchen Name")]
         public string KitchenName { get; set; }
+
         public Nullable<int> UserId { get; set; }
+
+        [Required]
+        [Display(Name = "Working Days")]
         public string WorkingDays { get; set; }
+
+        [Display(Name = "Starting Time")]
         public DateTime StartTime { get; set; }
+
+        [Display(Name = "Closing Time")]
         public DateTime CloseTime { get; set; }
+
         public string Image { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus { get; set; }
         public virtual User User { get; set; }

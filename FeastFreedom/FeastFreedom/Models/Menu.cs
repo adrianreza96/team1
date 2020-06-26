@@ -11,7 +11,8 @@ namespace FeastFreedom.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Menu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,11 +23,21 @@ namespace FeastFreedom.Models
     
         public int MenuId { get; set; }
         public Nullable<int> KitchenId { get; set; }
+
+        [Required]
+        [Display(Name = "Dish Name")]
         public string ItemName { get; set; }
+
+        [Display(Name = "Vegeterian, Vegan, Neither")]
         public string VeganFriendly { get; set; }
+
+        [Display(Name = "Menu Type")]
         public string MenuType { get; set; }
+
         public string Ingredients { get; set; }
+
         public Nullable<decimal> Price { get; set; }
+
         public string Image { get; set; }
     
         public virtual Kitchen Kitchen { get; set; }

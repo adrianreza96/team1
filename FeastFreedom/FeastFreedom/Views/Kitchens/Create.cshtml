@@ -70,10 +70,10 @@
                         <div class="input-group-prepend" data-target="#datetimepicker" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
                         </div>
-                        <input type="text" name="StartTime" class="form-control datetimepicker-input" data-target="#datetimepicker" placeholder="click icon to select time" style="font-size:13px" />
+                        <input type="text" name="timeStart" class="form-control datetimepicker-input" data-target="#datetimepicker" placeholder="click icon to select time" style="font-size:13px" />
                     </div>
                 </div>
-                @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.timeStart, "", new { @class = "text-danger" })
             </div>
             <script type="text/javascript">
                 $(function () {
@@ -90,10 +90,10 @@
                         <div class="input-group-prepend" data-target="#datetimepicker1" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
                         </div>
-                        <input type="text" name="CloseTime" class="form-control datetimepicker-input" data-target="#datetimepicker1" placeholder="click icon to select time" style="font-size:13px" />
+                        <input type="text" name="timeClose" class="form-control datetimepicker-input" data-target="#datetimepicker1" placeholder="click icon to select time" style="font-size:13px" />
                     </div>
                 </div>
-                @Html.ValidationMessageFor(model => model.CloseTime, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.timeClose, "", new { @class = "text-danger" })
             </div>
             <script type="text/javascript">
                 $(function () {

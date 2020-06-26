@@ -50,7 +50,6 @@ namespace FeastFreedom.Controllers
             return View(menu);
         }
 
-        [AuthenticationFilter]
         public ActionResult cart()
         {
             List<Menu> items = (List<Menu>)Session["cart"];
